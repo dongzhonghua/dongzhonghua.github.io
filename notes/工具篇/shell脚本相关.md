@@ -96,3 +96,15 @@ nohup结合，我们经常使用`nohup command &`命令形式来启动一些后�
 参考资料：
 
 https://blog.csdn.net/sprita1/article/details/42676307
+
+
+
+## mkcd
+
+```
+alias mkcd='function __mkcd(){ if [ $# == 1 ]; then mkdir $1; cd $1; unset -f __mkcd; elif [ $# == 2 ]; then mkdir $1 $2; cd $2; unset -f __mkcd; fi }; __mkcd'
+```
+
+https://blog.csdn.net/qq2233297039/article/details/85167444
+
+好像不太行，后面研究一下。
