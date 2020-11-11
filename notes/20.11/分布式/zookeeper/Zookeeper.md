@@ -1,3 +1,5 @@
+[TOC]
+
 # Zookeeper
 
 *2020-4-28* ——<https://www.bilibili.com/video/BV1M741137qY?p=74>
@@ -1180,7 +1182,7 @@ public class IdGenerate {
 }
 ```
 
-##### **分布式锁**
+##### 分布式锁
 
 分布式锁有多种实现方式，比如通过数据库、redis都可实现。作为分布式协同工具`Zookeeper`，当然也有着标准的实现方式。下面介绍在`zookeeper`中如果实现排他锁
 
