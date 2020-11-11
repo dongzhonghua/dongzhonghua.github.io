@@ -108,3 +108,9 @@ alias mkcd='function __mkcd(){ if [ $# == 1 ]; then mkdir $1; cd $1; unset -f __
 https://blog.csdn.net/qq2233297039/article/details/85167444
 
 好像不太行，后面研究一下。
+
+## find
+
+```shell
+sudo  find  /  -name 'index.html'
+```
