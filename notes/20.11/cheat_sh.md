@@ -1,0 +1,2 @@
+curl cht.sh/[command]
+
