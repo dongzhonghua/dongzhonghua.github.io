@@ -9,9 +9,6 @@
 这就会导致，同一个锁被获取了不止一次。
 
 
-
-
-
 ## 二、办法
 
 Redis中针对此种情况，引入了[红锁](https://redis.io/topics/distlock)的概念。
