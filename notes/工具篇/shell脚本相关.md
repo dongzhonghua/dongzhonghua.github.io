@@ -113,6 +113,8 @@ https://blog.csdn.net/qq2233297039/article/details/85167444
 
 ```shell
 sudo  find  /  -name 'index.html'
+
+find . -name '*.log' | xargs rm -rf // 删除所有log文件
 ```
 
 
@@ -166,3 +168,9 @@ sudo  find  /  -name 'index.html'
 如果输入的是:52 !bash，那么会把第52行的内容也就是ls -l作为命令执行，同时命令的输出结果会替换第52行的内容，注意其中的区别。
 
 
+
+## Date 
+
+linux shell 在给定日期上加上或者减去指定的天数
+
+date -d "20150416 -1 days" "+%Y%m%d"
