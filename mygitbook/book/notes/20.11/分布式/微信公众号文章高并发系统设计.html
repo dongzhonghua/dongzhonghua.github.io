@@ -1,0 +1,2096 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>微信公众号文章高并发系统设计.md · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../mygitbook/gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../mygitbook/gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../mygitbook/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../mygitbook/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../手写一个AQS.html" />
+    
+    
+    <link rel="prev" href="分布式的一些原理.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../mygitbook/">
+            
+                <a href="../../../mygitbook/">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../20.10/">
+            
+                <a href="../../20.10/">
+            
+                    
+                    20.10
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../20.10/java热部署原理及实践/">
+            
+                <a href="../../20.10/java热部署原理及实践/">
+            
+                    
+                    java热部署原理及实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../20.10/java热部署原理及实践/Java实现热部署（一）：类加载机制以及简单热部署的实现.html">
+            
+                <a href="../../20.10/java热部署原理及实践/Java实现热部署（一）：类加载机制以及简单热部署的实现.html">
+            
+                    
+                    Java实现热部署（一）：类加载机制以及简单热部署的实现.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../../20.10/java热部署原理及实践/Java实现热部署（二）：java类加载过程代码分析.html">
+            
+                <a href="../../20.10/java热部署原理及实践/Java实现热部署（二）：java类加载过程代码分析.html">
+            
+                    
+                    Java实现热部署（二）：java类加载过程代码分析.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../../20.10/java热部署原理及实践/Java实现热部署（四）：热部署插件分析.html">
+            
+                <a href="../../20.10/java热部署原理及实践/Java实现热部署（四）：热部署插件分析.html">
+            
+                    
+                    Java实现热部署（四）：热部署插件分析.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../../20.10/java热部署原理及实践/agent源码.html">
+            
+                <a href="../../20.10/java热部署原理及实践/agent源码.html">
+            
+                    
+                    agent源码.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5" data-path="../../20.10/java热部署原理及实践/attach源码.html">
+            
+                <a href="../../20.10/java热部署原理及实践/attach源码.html">
+            
+                    
+                    attach源码.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6" data-path="../../20.10/java热部署原理及实践/java实现热部署（三）：agent instrumentation attach等手段实现方法体级别的热替换.html">
+            
+                <a href="../../20.10/java热部署原理及实践/java实现热部署（三）：agent instrumentation attach等手段实现方法体级别的热替换.html">
+            
+                    
+                    java实现热部署（三）：agent instrumentation attach等手段实现方法体级别的热替换.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../20.10/jvm/">
+            
+                <a href="../../20.10/jvm/">
+            
+                    
+                    jvm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../../20.10/jvm/jvm可视化工具.html">
+            
+                <a href="../../20.10/jvm/jvm可视化工具.html">
+            
+                    
+                    jvm可视化工具.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../../20.10/jvm/jvm的方法区元空间等.html">
+            
+                <a href="../../20.10/jvm/jvm的方法区元空间等.html">
+            
+                    
+                    jvm的方法区元空间等.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../20.10/markdown标题数字.html">
+            
+                <a href="../../20.10/markdown标题数字.html">
+            
+                    
+                    markdown标题数字.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../20.10/maven/">
+            
+                <a href="../../20.10/maven/">
+            
+                    
+                    maven
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../../20.10/maven/一maven打包工具.html">
+            
+                <a href="../../20.10/maven/一maven打包工具.html">
+            
+                    
+                    一maven打包工具.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../../20.10/maven/三manifest和maven.html">
+            
+                <a href="../../20.10/maven/三manifest和maven.html">
+            
+                    
+                    三manifest和maven.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="../../20.10/maven/二通过maven来启动main方法.html">
+            
+                <a href="../../20.10/maven/二通过maven来启动main方法.html">
+            
+                    
+                    二通过maven来启动main方法.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="../../20.10/maven/五maven构建的生命周期和常用命令.html">
+            
+                <a href="../../20.10/maven/五maven构建的生命周期和常用命令.html">
+            
+                    
+                    五maven构建的生命周期和常用命令.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="../../20.10/maven/四dependencyManagement和dependencies.html">
+            
+                <a href="../../20.10/maven/四dependencyManagement和dependencies.html">
+            
+                    
+                    四dependencyManagement和dependencies.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../20.10/vscode插件/">
+            
+                <a href="../../20.10/vscode插件/">
+            
+                    
+                    vscode插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1" data-path="../../20.10/vscode插件/vscode插件.html">
+            
+                <a href="../../20.10/vscode插件/vscode插件.html">
+            
+                    
+                    vscode插件.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../20.10之前归档/">
+            
+                <a href="../../20.10之前归档/">
+            
+                    
+                    20.10之前归档
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../20.10之前归档/HashMap.html">
+            
+                <a href="../../20.10之前归档/HashMap.html">
+            
+                    
+                    HashMap.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../20.10之前归档/JVM.html">
+            
+                <a href="../../20.10之前归档/JVM.html">
+            
+                    
+                    JVM.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../20.10之前归档/Java服务异常分析的几个思路.html">
+            
+                <a href="../../20.10之前归档/Java服务异常分析的几个思路.html">
+            
+                    
+                    Java服务异常分析的几个思路.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../../20.10之前归档/Redis设计与实现.html">
+            
+                <a href="../../20.10之前归档/Redis设计与实现.html">
+            
+                    
+                    Redis设计与实现.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../../20.10之前归档/Spring知识点.html">
+            
+                <a href="../../20.10之前归档/Spring知识点.html">
+            
+                    
+                    Spring知识点.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../../20.10之前归档/crontab定时任务.html">
+            
+                <a href="../../20.10之前归档/crontab定时任务.html">
+            
+                    
+                    crontab定时任务.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../../20.10之前归档/idea远程部署docker.html">
+            
+                <a href="../../20.10之前归档/idea远程部署docker.html">
+            
+                    
+                    idea远程部署docker.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../../20.10之前归档/linux系统命令行快捷键.html">
+            
+                <a href="../../20.10之前归档/linux系统命令行快捷键.html">
+            
+                    
+                    linux系统命令行快捷键.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="../../20.10之前归档/redis知识点和面试问题.html">
+            
+                <a href="../../20.10之前归档/redis知识点和面试问题.html">
+            
+                    
+                    redis知识点和面试问题.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="../../20.10之前归档/redis线程模型.html">
+            
+                <a href="../../20.10之前归档/redis线程模型.html">
+            
+                    
+                    redis线程模型.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="../../20.10之前归档/tcp建立和释放连接过程三次握手四次挥手.html">
+            
+                <a href="../../20.10之前归档/tcp建立和释放连接过程三次握手四次挥手.html">
+            
+                    
+                    tcp建立和释放连接过程三次握手四次挥手.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.12" data-path="../../20.10之前归档/使用typora自动上传图片到github仓库.html">
+            
+                <a href="../../20.10之前归档/使用typora自动上传图片到github仓库.html">
+            
+                    
+                    使用typora自动上传图片到github仓库.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="../../20.10之前归档/写Redis时的并发异常和分布式锁.html">
+            
+                <a href="../../20.10之前归档/写Redis时的并发异常和分布式锁.html">
+            
+                    
+                    写Redis时的并发异常和分布式锁.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="../../20.10之前归档/分布式系统.html">
+            
+                <a href="../../20.10之前归档/分布式系统.html">
+            
+                    
+                    分布式系统.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="../../20.10之前归档/单例模式整理以及相关的知识点.html">
+            
+                <a href="../../20.10之前归档/单例模式整理以及相关的知识点.html">
+            
+                    
+                    单例模式整理以及相关的知识点.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="../../20.10之前归档/如何制作一个自己的图床.html">
+            
+                <a href="../../20.10之前归档/如何制作一个自己的图床.html">
+            
+                    
+                    如何制作一个自己的图床.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.17" data-path="../../20.10之前归档/常用的消息中间件.html">
+            
+                <a href="../../20.10之前归档/常用的消息中间件.html">
+            
+                    
+                    常用的消息中间件.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.18" data-path="../../20.10之前归档/并发编程常见面试题.html">
+            
+                <a href="../../20.10之前归档/并发编程常见面试题.html">
+            
+                    
+                    并发编程常见面试题.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.19" data-path="../../20.10之前归档/搜索引擎书.html">
+            
+                <a href="../../20.10之前归档/搜索引擎书.html">
+            
+                    
+                    搜索引擎书.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.20" data-path="../../20.10之前归档/操作系统知识点和面试总结.html">
+            
+                <a href="../../20.10之前归档/操作系统知识点和面试总结.html">
+            
+                    
+                    操作系统知识点和面试总结.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.21" data-path="../../20.10之前归档/数据库常考点.html">
+            
+                <a href="../../20.10之前归档/数据库常考点.html">
+            
+                    
+                    数据库常考点.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.22" data-path="../../20.10之前归档/数据库索引.html">
+            
+                <a href="../../20.10之前归档/数据库索引.html">
+            
+                    
+                    数据库索引.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.23" data-path="../../20.10之前归档/新买的服务器要做哪些配置.html">
+            
+                <a href="../../20.10之前归档/新买的服务器要做哪些配置.html">
+            
+                    
+                    新买的服务器要做哪些配置.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.24" data-path="../../20.10之前归档/新建springboot项目.html">
+            
+                <a href="../../20.10之前归档/新建springboot项目.html">
+            
+                    
+                    新建springboot项目.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.25" data-path="../../20.10之前归档/系统架构设计.html">
+            
+                <a href="../../20.10之前归档/系统架构设计.html">
+            
+                    
+                    系统架构设计.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.26" data-path="../../20.10之前归档/经验教训.html">
+            
+                <a href="../../20.10之前归档/经验教训.html">
+            
+                    
+                    经验教训.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.27" data-path="../../20.10之前归档/计算机网络常见面试题.html">
+            
+                <a href="../../20.10之前归档/计算机网络常见面试题.html">
+            
+                    
+                    计算机网络常见面试题.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.28" data-path="../../20.10之前归档/设计模式常考点.html">
+            
+                <a href="../../20.10之前归档/设计模式常考点.html">
+            
+                    
+                    设计模式常考点.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    20.11
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../HTTPS/">
+            
+                <a href="../HTTPS/">
+            
+                    
+                    HTTPS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../HTTPS/https原理.html">
+            
+                <a href="../HTTPS/https原理.html">
+            
+                    
+                    https原理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../HTTPS/如何让自己的网站支持https.html">
+            
+                <a href="../HTTPS/如何让自己的网站支持https.html">
+            
+                    
+                    如何让自己的网站支持https.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../cheat_sh.html">
+            
+                <a href="../cheat_sh.html">
+            
+                    
+                    cheat_sh.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../docker.html">
+            
+                <a href="../docker.html">
+            
+                    
+                    docker.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../java.io.Closeable接口.html">
+            
+                <a href="../java.io.Closeable接口.html">
+            
+                    
+                    java.io.Closeable接口.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../java测试.html">
+            
+                <a href="../java测试.html">
+            
+                    
+                    java测试.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../lambda和stream.html">
+            
+                <a href="../lambda和stream.html">
+            
+                    
+                    lambda和stream.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../nginx.html">
+            
+                <a href="../nginx.html">
+            
+                    
+                    nginx.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../spring启动流程（敖丙公众号）.html">
+            
+                <a href="../spring启动流程（敖丙公众号）.html">
+            
+                    
+                    spring启动流程（敖丙公众号）.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    分布式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.9.1" data-path="zookeeper/">
+            
+                <a href="zookeeper/">
+            
+                    
+                    zookeeper
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.9.1.1" data-path="zookeeper/Zookeeper.html">
+            
+                <a href="zookeeper/Zookeeper.html">
+            
+                    
+                    Zookeeper.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9.1.2" data-path="zookeeper/zookeeper学习一.html">
+            
+                <a href="zookeeper/zookeeper学习一.html">
+            
+                    
+                    zookeeper学习一.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9.2" data-path="分布式的一些原理.html">
+            
+                <a href="分布式的一些原理.html">
+            
+                    
+                    分布式的一些原理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.9.3" data-path="微信公众号文章高并发系统设计.html">
+            
+                <a href="微信公众号文章高并发系统设计.html">
+            
+                    
+                    微信公众号文章高并发系统设计.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../手写一个AQS.html">
+            
+                <a href="../手写一个AQS.html">
+            
+                    
+                    手写一个AQS.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../计算机启动过程.html">
+            
+                <a href="../计算机启动过程.html">
+            
+                    
+                    计算机启动过程.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../20.12/">
+            
+                <a href="../../20.12/">
+            
+                    
+                    20.12
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../20.12/Java代理.html">
+            
+                <a href="../../20.12/Java代理.html">
+            
+                    
+                    Java代理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../20.12/Redis/">
+            
+                <a href="../../20.12/Redis/">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../../20.12/Redis/Redission.html">
+            
+                <a href="../../20.12/Redis/Redission.html">
+            
+                    
+                    Redission.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../../20.12/Redis/Redis主从哨兵cluster(集群">
+            
+                <span>
+            
+                    
+                    Redis主从哨兵cluster(集群).md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../../20.12/Redis/Redis分布式锁RedLock.html">
+            
+                <a href="../../20.12/Redis/Redis分布式锁RedLock.html">
+            
+                    
+                    Redis分布式锁RedLock.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="../../20.12/Redis/Redis缓存一致性.html">
+            
+                <a href="../../20.12/Redis/Redis缓存一致性.html">
+            
+                    
+                    Redis缓存一致性.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.5" data-path="../../20.12/Redis/Redis订阅发布.html">
+            
+                <a href="../../20.12/Redis/Redis订阅发布.html">
+            
+                    
+                    Redis订阅发布.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.6" data-path="../../20.12/Redis/redis异步复制丢失和脑裂问题.html">
+            
+                <a href="../../20.12/Redis/redis异步复制丢失和脑裂问题.html">
+            
+                    
+                    redis异步复制丢失和脑裂问题.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.7" data-path="../../20.12/Redis/大key问题及解决方案.html">
+            
+                <a href="../../20.12/Redis/大key问题及解决方案.html">
+            
+                    
+                    大key问题及解决方案.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../20.12/csdn上分享的java一次oom的解决方案.html">
+            
+                <a href="../../20.12/csdn上分享的java一次oom的解决方案.html">
+            
+                    
+                    csdn上分享的java一次oom的解决方案.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../20.12/vimdiff.html">
+            
+                <a href="../../20.12/vimdiff.html">
+            
+                    
+                    vimdiff.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../../20.12/使用maven做Junit5单元测试.html">
+            
+                <a href="../../20.12/使用maven做Junit5单元测试.html">
+            
+                    
+                    使用maven做Junit5单元测试.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../../20.12/登录ssh不需要密码的方式.html">
+            
+                <a href="../../20.12/登录ssh不需要密码的方式.html">
+            
+                    
+                    登录ssh不需要密码的方式.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../../20.12/禁止Chrome通过两指轻划来切换页面.html">
+            
+                <a href="../../20.12/禁止Chrome通过两指轻划来切换页面.html">
+            
+                    
+                    禁止Chrome通过两指轻划来切换页面.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../21.01/">
+            
+                <a href="../../21.01/">
+            
+                    
+                    21.01
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../21.01/Java中为什么基本类型要有包装类型.html">
+            
+                <a href="../../21.01/Java中为什么基本类型要有包装类型.html">
+            
+                    
+                    Java中为什么基本类型要有包装类型.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../21.01/Nagle算法.html">
+            
+                <a href="../../21.01/Nagle算法.html">
+            
+                    
+                    Nagle算法.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../21.01/maven打包特别慢的解决方案.html">
+            
+                <a href="../../21.01/maven打包特别慢的解决方案.html">
+            
+                    
+                    maven打包特别慢的解决方案.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../21.01/函数式接口.html">
+            
+                <a href="../../21.01/函数式接口.html">
+            
+                    
+                    函数式接口.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../21.01/委派模式(Delegate">
+            
+                <span>
+            
+                    
+                    委派模式(Delegate).md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../21.01/定时器.html">
+            
+                <a href="../../21.01/定时器.html">
+            
+                    
+                    定时器.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../netty/">
+            
+                <a href="../../netty/">
+            
+                    
+                    netty
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../netty/KStackNetty.html">
+            
+                <a href="../../netty/KStackNetty.html">
+            
+                    
+                    KStackNetty.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../netty/netty.html">
+            
+                <a href="../../netty/netty.html">
+            
+                    
+                    netty.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../temp/">
+            
+                <a href="../../temp/">
+            
+                    
+                    temp
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../temp/BufferTrigger.html">
+            
+                <a href="../../temp/BufferTrigger.html">
+            
+                    
+                    BufferTrigger.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../temp/flink/">
+            
+                <a href="../../temp/flink/">
+            
+                    
+                    flink
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="../../temp/flink/时间语义.html">
+            
+                <a href="../../temp/flink/时间语义.html">
+            
+                    
+                    时间语义.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../temp/flink-demo.html">
+            
+                <a href="../../temp/flink-demo.html">
+            
+                    
+                    flink-demo.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../temp/hadoop/">
+            
+                <a href="../../temp/hadoop/">
+            
+                    
+                    hadoop
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../../temp/hadoop/分布式文件系统和hadoop的由来.html">
+            
+                <a href="../../temp/hadoop/分布式文件系统和hadoop的由来.html">
+            
+                    
+                    分布式文件系统和hadoop的由来.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../temp/jdk源码阅读.html">
+            
+                <a href="../../temp/jdk源码阅读.html">
+            
+                    
+                    jdk源码阅读.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../../temp/mybatis日志模块与适配器模式.html">
+            
+                <a href="../../temp/mybatis日志模块与适配器模式.html">
+            
+                    
+                    mybatis日志模块与适配器模式.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../../temp/mybatis源码阅读.html">
+            
+                <a href="../../temp/mybatis源码阅读.html">
+            
+                    
+                    mybatis源码阅读.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../../temp/redis实现频次控制.html">
+            
+                <a href="../../temp/redis实现频次控制.html">
+            
+                    
+                    redis实现频次控制.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../../temp/redis问题画像图待整理.html">
+            
+                <a href="../../temp/redis问题画像图待整理.html">
+            
+                    
+                    redis问题画像图待整理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../../temp/smart-framwork/">
+            
+                <a href="../../temp/smart-framwork/">
+            
+                    
+                    smart-framwork
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.10.1" data-path="../../temp/smart-framwork/Smart框架系列文章读书笔记.html">
+            
+                <a href="../../temp/smart-framwork/Smart框架系列文章读书笔记.html">
+            
+                    
+                    Smart框架系列文章读书笔记.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10.2" data-path="../../temp/smart-framwork/github里发现的一个项目.html">
+            
+                <a href="../../temp/smart-framwork/github里发现的一个项目.html">
+            
+                    
+                    github里发现的一个项目.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10.3" data-path="../../temp/smart-framwork/java获取指定包名下的所有类.html">
+            
+                <a href="../../temp/smart-framwork/java获取指定包名下的所有类.html">
+            
+                    
+                    java获取指定包名下的所有类.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../工具篇/">
+            
+                <a href="../../工具篇/">
+            
+                    
+                    工具篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../工具篇/curl.html">
+            
+                <a href="../../工具篇/curl.html">
+            
+                    
+                    curl.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../工具篇/git相关.html">
+            
+                <a href="../../工具篇/git相关.html">
+            
+                    
+                    git相关.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../工具篇/mac相关的快捷键操作.html">
+            
+                <a href="../../工具篇/mac相关的快捷键操作.html">
+            
+                    
+                    mac相关的快捷键操作.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../../工具篇/shell脚本相关.html">
+            
+                <a href="../../工具篇/shell脚本相关.html">
+            
+                    
+                    shell脚本相关.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../../mygitbook" >微信公众号文章高并发系统设计.md</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><ul>
+<li><div><a href="#&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x6F14;&#x5316;">&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x6F14;&#x5316;</a><i></i></div></li>
+<li><div><a href="#rpc">RPC</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#dubbo&#x5DE5;&#x4F5C;&#x539F;&#x7406;">Dubbo&#x5DE5;&#x4F5C;&#x539F;&#x7406;</a><i></i></div></li>
+<li><div><a href="#dubbo&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;">Dubbo&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;</a><i></i></div></li>
+<li><div><a href="#&#x96C6;&#x7FA4;&#x5BB9;&#x9519;">&#x96C6;&#x7FA4;&#x5BB9;&#x9519;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x6D88;&#x606F;&#x961F;&#x5217;">&#x6D88;&#x606F;&#x961F;&#x5217;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#x6D88;&#x606F;&#x53EF;&#x9760;&#x6027;">&#x6D88;&#x606F;&#x53EF;&#x9760;&#x6027;</a><i></i></div></li>
+<li><div><a href="#&#x6D88;&#x606F;&#x7684;&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;">&#x6D88;&#x606F;&#x7684;&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x6570;&#x636E;&#x5E93;">&#x6570;&#x636E;&#x5E93;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#x6C34;&#x5E73;&#x5206;&#x8868;">&#x6C34;&#x5E73;&#x5206;&#x8868;</a><i></i></div></li>
+<li><div><a href="#&#x5206;&#x8868;&#x540E;&#x7684;id&#x552F;&#x4E00;&#x6027;">&#x5206;&#x8868;&#x540E;&#x7684;ID&#x552F;&#x4E00;&#x6027;</a><i></i></div></li>
+<li><div><a href="#&#x4E3B;&#x4ECE;&#x540C;&#x6B65;&#x539F;&#x7406;">&#x4E3B;&#x4ECE;&#x540C;&#x6B65;&#x539F;&#x7406;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x7F13;&#x5B58;">&#x7F13;&#x5B58;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#x70ED;key&#x95EE;&#x9898;">&#x70ED;key&#x95EE;&#x9898;</a><i></i></div></li>
+<li><div><a href="#&#x7F13;&#x5B58;&#x51FB;&#x7A7F;">&#x7F13;&#x5B58;&#x51FB;&#x7A7F;</a><i></i></div></li>
+<li><div><a href="#&#x7F13;&#x5B58;&#x7A7F;&#x900F;">&#x7F13;&#x5B58;&#x7A7F;&#x900F;</a><i></i></div></li>
+<li><div><a href="#&#x7F13;&#x5B58;&#x96EA;&#x5D29;">&#x7F13;&#x5B58;&#x96EA;&#x5D29;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x7A33;&#x5B9A;&#x6027;">&#x7A33;&#x5B9A;&#x6027;</a><i></i></div></li>
+<li><div><a href="#&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</a><i></i></div></li>
+</ul>
+</div>
+
+<p><a href="https://mp.weixin.qq.com/s/SeamvHyHLMUF1vrhUy1BXg" target="_blank">https://mp.weixin.qq.com/s/SeamvHyHLMUF1vrhUy1BXg</a></p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x9053;&#x5F88;&#x5E38;&#x89C1;&#x7684;&#x9762;&#x8BD5;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x5927;&#x591A;&#x6570;&#x4EBA;&#x5E76;&#x4E0D;&#x77E5;&#x9053;&#x600E;&#x4E48;&#x56DE;&#x7B54;&#xFF0C;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#x5176;&#x5B9E;&#x53EF;&#x4EE5;&#x6709;&#x5F88;&#x591A;&#x5F62;&#x5F0F;&#x7684;&#x63D0;&#x95EE;&#x65B9;&#x5F0F;&#xFF0C;&#x4F60;&#x4E00;&#x5B9A;&#x89C1;&#x8FC7;&#x800C;&#x4E14;&#x611F;&#x89C9;&#x65E0;&#x4ECE;&#x4E0B;&#x624B;&#xFF1A;</p>
+<p>&#x9762;&#x5BF9;&#x4E1A;&#x52A1;&#x6025;&#x5267;&#x589E;&#x957F;&#x4F60;&#x600E;&#x4E48;&#x5904;&#x7406;&#xFF1F;</p>
+<p>&#x4E1A;&#x52A1;&#x91CF;&#x589E;&#x957F;10&#x500D;&#x3001;100&#x500D;&#x600E;&#x4E48;&#x5904;&#x7406;&#xFF1F;</p>
+<p>&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x600E;&#x4E48;&#x652F;&#x6491;&#x9AD8;&#x5E76;&#x53D1;&#x7684;&#xFF1F;</p>
+<p>&#x600E;&#x4E48;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x9AD8;&#x5E76;&#x53D1;&#x7CFB;&#x7EDF;&#xFF1F;</p>
+<p>&#x9AD8;&#x5E76;&#x53D1;&#x7CFB;&#x7EDF;&#x90FD;&#x6709;&#x4EC0;&#x4E48;&#x7279;&#x70B9;&#xFF1F;</p>
+<p>... ...</p>
+<p>&#x8BF8;&#x5982;&#x6B64;&#x7C7B;&#xFF0C;&#x95EE;&#x6CD5;&#x5F88;&#x591A;&#xFF0C;&#x4F46;&#x662F;&#x9762;&#x8BD5;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x770B;&#x7740;&#x5F88;&#x96BE;&#x65E0;&#x5904;&#x4E0B;&#x624B;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6709;&#x4E00;&#x4E2A;&#x5E38;&#x89C4;&#x7684;&#x601D;&#x8DEF;&#x53BB;&#x56DE;&#x7B54;&#xFF0C;&#x5C31;&#x662F;&#x56F4;&#x7ED5;&#x652F;&#x6491;&#x9AD8;&#x5E76;&#x53D1;&#x7684;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x600E;&#x4E48;&#x8BBE;&#x8BA1;&#x7CFB;&#x7EDF;&#x624D;&#x5408;&#x7406;&#xFF1F;&#x5982;&#x679C;&#x4F60;&#x80FD;&#x60F3;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x90A3;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x56F4;&#x7ED5;&#x786C;&#x4EF6;&#x548C;&#x8F6F;&#x4EF6;&#x5C42;&#x9762;&#x600E;&#x4E48;&#x652F;&#x6491;&#x9AD8;&#x5E76;&#x53D1;&#x8FD9;&#x4E2A;&#x8BDD;&#x9898;&#x53BB;&#x9610;&#x8FF0;&#x4E86;&#x3002;&#x672C;&#x8D28;&#x4E0A;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x662F;&#x7EFC;&#x5408;&#x8003;&#x9A8C;&#x4F60;&#x5BF9;&#x5404;&#x4E2A;&#x7EC6;&#x8282;&#x662F;&#x5426;&#x77E5;&#x9053;&#x600E;&#x4E48;&#x5904;&#x7406;&#xFF0C;&#x662F;&#x5426;&#x6709;&#x7ECF;&#x9A8C;&#x5904;&#x7406;&#x8FC7;&#x800C;&#x5DF2;&#x3002;</p>
+<p>&#x9762;&#x5BF9;&#x8D85;&#x9AD8;&#x7684;&#x5E76;&#x53D1;&#xFF0C;&#x9996;&#x5148;&#x786C;&#x4EF6;&#x5C42;&#x9762;&#x673A;&#x5668;&#x8981;&#x80FD;&#x625B;&#x5F97;&#x4F4F;&#xFF0C;&#x5176;&#x6B21;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x505A;&#x597D;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x62C6;&#x5206;&#xFF0C;&#x4EE3;&#x7801;&#x5C42;&#x9762;&#x5404;&#x79CD;&#x7F13;&#x5B58;&#x3001;&#x524A;&#x5CF0;&#x3001;&#x89E3;&#x8026;&#x7B49;&#x7B49;&#x95EE;&#x9898;&#x8981;&#x5904;&#x7406;&#x597D;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x5C42;&#x9762;&#x505A;&#x597D;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x3001;&#x5206;&#x5E93;&#x5206;&#x8868;&#xFF0C;&#x7A33;&#x5B9A;&#x6027;&#x65B9;&#x9762;&#x8981;&#x4FDD;&#x8BC1;&#x6709;&#x76D1;&#x63A7;&#xFF0C;&#x7194;&#x65AD;&#x9650;&#x6D41;&#x964D;&#x7EA7;&#x8BE5;&#x6709;&#x7684;&#x5FC5;&#x987B;&#x8981;&#x6709;&#xFF0C;&#x53D1;&#x751F;&#x95EE;&#x9898;&#x80FD;&#x53CA;&#x65F6;&#x53D1;&#x73B0;&#x5904;&#x7406;&#x3002;&#x8FD9;&#x6837;&#x4ECE;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;&#x65B9;&#x9762;&#x5C31;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x521D;&#x6B65;&#x7684;&#x6982;&#x5FF5;&#x3002;</p>
+<h2 id="&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x6F14;&#x5316;">&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x6F14;&#x5316;</h2>
+<p>&#x5728;&#x4E92;&#x8054;&#x7F51;&#x65E9;&#x671F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5355;&#x4F53;&#x67B6;&#x6784;&#x5C31;&#x8DB3;&#x4EE5;&#x652F;&#x6491;&#x8D77;&#x65E5;&#x5E38;&#x7684;&#x4E1A;&#x52A1;&#x9700;&#x6C42;&#xFF0C;&#x5927;&#x5BB6;&#x7684;&#x6240;&#x6709;&#x4E1A;&#x52A1;&#x670D;&#x52A1;&#x90FD;&#x5728;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x91CC;&#xFF0C;&#x90E8;&#x7F72;&#x5728;&#x4E00;&#x53F0;&#x7269;&#x7406;&#x673A;&#x5668;&#x4E0A;&#x3002;&#x6240;&#x6709;&#x7684;&#x4E1A;&#x52A1;&#x5305;&#x62EC;&#x4F60;&#x7684;&#x4EA4;&#x6613;&#x7CFB;&#x7EDF;&#x3001;&#x4F1A;&#x5458;&#x4FE1;&#x606F;&#x3001;&#x5E93;&#x5B58;&#x3001;&#x5546;&#x54C1;&#x7B49;&#x7B49;&#x90FD;&#x5939;&#x6742;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x5F53;&#x6D41;&#x91CF;&#x4E00;&#x65E6;&#x8D77;&#x6765;&#x4E4B;&#x540E;&#xFF0C;&#x5355;&#x4F53;&#x67B6;&#x6784;&#x7684;&#x95EE;&#x9898;&#x5C31;&#x66B4;&#x9732;&#x51FA;&#x6765;&#x4E86;&#xFF0C;&#x673A;&#x5668;&#x6302;&#x4E86;&#x6240;&#x6709;&#x7684;&#x4E1A;&#x52A1;&#x5168;&#x90E8;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;&#x4E86;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kk0ialF0DVYbtzN2mqZPMwHIq0h6YiaKegLJWGoO96QM1hlicibxM67D1aSw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x4E8E;&#x662F;&#xFF0C;&#x96C6;&#x7FA4;&#x67B6;&#x6784;&#x7684;&#x67B6;&#x6784;&#x5F00;&#x59CB;&#x51FA;&#x73B0;&#xFF0C;&#x5355;&#x673A;&#x65E0;&#x6CD5;&#x6297;&#x4F4F;&#x7684;&#x538B;&#x529B;&#xFF0C;&#x6700;&#x7B80;&#x5355;&#x7684;&#x529E;&#x6CD5;&#x5C31;&#x662F;&#x6C34;&#x5E73;&#x62D3;&#x5C55;&#x6A2A;&#x5411;&#x6269;&#x5BB9;&#x4E86;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x901A;&#x8FC7;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x628A;&#x538B;&#x529B;&#x6D41;&#x91CF;&#x5206;&#x644A;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x673A;&#x5668;&#x4E0A;&#xFF0C;&#x6682;&#x65F6;&#x662F;&#x89E3;&#x51B3;&#x4E86;&#x5355;&#x70B9;&#x5BFC;&#x81F4;&#x670D;&#x52A1;&#x4E0D;&#x53EF;&#x7528;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkcsLoebo42vcUWFAalAMmDINrf7AW0aiaDe74gCOyF6eSsZd8DtbVasA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x4F46;&#x662F;&#x968F;&#x7740;&#x4E1A;&#x52A1;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x91CC;&#x7EF4;&#x62A4;&#x6240;&#x6709;&#x7684;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x4F7F;&#x5F00;&#x53D1;&#x548C;&#x4EE3;&#x7801;&#x7EF4;&#x62A4;&#x53D8;&#x5F97;&#x8D8A;&#x6765;&#x8D8A;&#x56F0;&#x96BE;&#xFF0C;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x9700;&#x6C42;&#x6539;&#x52A8;&#x90FD;&#x9700;&#x8981;&#x53D1;&#x5E03;&#x6574;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x4EE3;&#x7801;&#x7684;&#x5408;&#x5E76;&#x51B2;&#x7A81;&#x4E5F;&#x4F1A;&#x53D8;&#x5F97;&#x8D8A;&#x6765;&#x8D8A;&#x9891;&#x7E41;&#xFF0C;&#x540C;&#x65F6;&#x7EBF;&#x4E0A;&#x6545;&#x969C;&#x51FA;&#x73B0;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x8D8A;&#x5927;&#x3002;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x67B6;&#x6784;&#x6A21;&#x5F0F;&#x5C31;&#x8BDE;&#x751F;&#x4E86;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkUxmEr8iasnsfBicbNCSkEIpHr8Ep2yCwvLic6uhSeRR3aceVicUIeXF8GA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x628A;&#x6BCF;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x4E1A;&#x52A1;&#x62C6;&#x5206;&#x5F00;&#x72EC;&#x7ACB;&#x90E8;&#x7F72;&#xFF0C;&#x5F00;&#x53D1;&#x548C;&#x7EF4;&#x62A4;&#x7684;&#x6210;&#x672C;&#x964D;&#x4F4E;&#xFF0C;&#x96C6;&#x7FA4;&#x80FD;&#x627F;&#x53D7;&#x7684;&#x538B;&#x529B;&#x4E5F;&#x63D0;&#x9AD8;&#x4E86;&#xFF0C;&#x518D;&#x4E5F;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x5C0F;&#x5C0F;&#x7684;&#x6539;&#x52A8;&#x70B9;&#x9700;&#x8981;&#x7275;&#x4E00;&#x53D1;&#x800C;&#x52A8;&#x5168;&#x8EAB;&#x4E86;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x7684;&#x70B9;&#x4ECE;&#x9AD8;&#x5E76;&#x53D1;&#x7684;&#x89D2;&#x5EA6;&#x800C;&#x8A00;&#xFF0C;&#x4F3C;&#x4E4E;&#x90FD;&#x53EF;&#x4EE5;&#x5F52;&#x7C7B;&#x4E3A;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x62C6;&#x5206;&#x548C;&#x96C6;&#x7FA4;&#x7269;&#x7406;&#x673A;&#x5668;&#x7684;&#x6269;&#x5C55;&#x63D0;&#x9AD8;&#x4E86;&#x6574;&#x4F53;&#x7684;&#x7CFB;&#x7EDF;&#x6297;&#x538B;&#x80FD;&#x529B;&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;&#x968F;&#x4E4B;&#x62C6;&#x5206;&#x800C;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#x4E5F;&#x5C31;&#x662F;&#x9AD8;&#x5E76;&#x53D1;&#x7CFB;&#x7EDF;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="rpc">RPC</h2>
+<p>&#x5FAE;&#x670D;&#x52A1;&#x5316;&#x7684;&#x62C6;&#x5206;&#x5E26;&#x6765;&#x7684;&#x597D;&#x5904;&#x548C;&#x4FBF;&#x5229;&#x6027;&#x662F;&#x663E;&#x800C;&#x6613;&#x89C1;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4E0E;&#x6B64;&#x540C;&#x65F6;&#x5404;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x5C31;&#x9700;&#x8981;&#x8003;&#x8651;&#x4E86;&#x3002;&#x4F20;&#x7EDF;HTTP&#x7684;&#x901A;&#x4FE1;&#x65B9;&#x5F0F;&#x5BF9;&#x6027;&#x80FD;&#x662F;&#x6781;&#x5927;&#x7684;&#x6D6A;&#x8D39;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981;&#x5F15;&#x5165;&#x8BF8;&#x5982;Dubbo&#x7C7B;&#x7684;RPC&#x6846;&#x67B6;&#xFF0C;&#x57FA;&#x4E8E;TCP&#x957F;&#x8FDE;&#x63A5;&#x7684;&#x65B9;&#x5F0F;&#x63D0;&#x9AD8;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x901A;&#x4FE1;&#x7684;&#x6548;&#x7387;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkPRsicIDaiaLgFzlL3DSxcwTSzTgffDOCvpuIuvw0VvXs0P41BuUI4L2Q/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x6211;&#x4EEC;&#x5047;&#x8BBE;&#x539F;&#x6765;&#x6765;&#x81EA;&#x5BA2;&#x6237;&#x7AEF;&#x7684;QPS&#x662F;9000&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x901A;&#x8FC7;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;&#x5206;&#x6563;&#x5230;&#x6BCF;&#x53F0;&#x673A;&#x5668;&#x5C31;&#x662F;3000&#xFF0C;&#x800C;HTTP&#x6539;&#x4E3A;RPC&#x4E4B;&#x540E;&#x63A5;&#x53E3;&#x7684;&#x8017;&#x65F6;&#x7F29;&#x77ED;&#x4E86;&#xFF0C;&#x5355;&#x673A;&#x548C;&#x6574;&#x4F53;&#x7684;QPS&#x5C31;&#x63D0;&#x5347;&#x4E86;&#x3002;&#x800C;RPC&#x6846;&#x67B6;&#x672C;&#x8EAB;&#x4E00;&#x822C;&#x90FD;&#x81EA;&#x5E26;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x3001;&#x7194;&#x65AD;&#x964D;&#x7EA7;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x66F4;&#x597D;&#x7684;&#x7EF4;&#x62A4;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x9AD8;&#x53EF;&#x7528;&#x6027;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x8BF4;&#x5B8C;RPC&#xFF0C;&#x4F5C;&#x4E3A;&#x57FA;&#x672C;&#x4E0A;&#x56FD;&#x5185;&#x666E;&#x904D;&#x7684;&#x9009;&#x62E9;Dubbo&#x7684;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x539F;&#x7406;&#x5C31;&#x662F;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<h3 id="dubbo&#x5DE5;&#x4F5C;&#x539F;&#x7406;">Dubbo&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<ol>
+<li>&#x670D;&#x52A1;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;provider&#x548C;consumer&#x6839;&#x636E;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x8FDE;&#x63A5;&#x5230;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;register&#xFF0C;&#x5206;&#x522B;&#x5411;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x6CE8;&#x518C;&#x548C;&#x8BA2;&#x9605;&#x670D;&#x52A1;</li>
+<li>register&#x6839;&#x636E;&#x670D;&#x52A1;&#x8BA2;&#x9605;&#x5173;&#x7CFB;&#xFF0C;&#x8FD4;&#x56DE;provider&#x4FE1;&#x606F;&#x5230;consumer&#xFF0C;&#x540C;&#x65F6;consumer&#x4F1A;&#x628A;provider&#x4FE1;&#x606F;&#x7F13;&#x5B58;&#x5230;&#x672C;&#x5730;&#x3002;&#x5982;&#x679C;&#x4FE1;&#x606F;&#x6709;&#x53D8;&#x66F4;&#xFF0C;consumer&#x4F1A;&#x6536;&#x5230;&#x6765;&#x81EA;register&#x7684;&#x63A8;&#x9001;</li>
+<li>consumer&#x751F;&#x6210;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x540C;&#x65F6;&#x6839;&#x636E;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;&#xFF0C;&#x9009;&#x62E9;&#x4E00;&#x53F0;provider&#xFF0C;&#x540C;&#x65F6;&#x5B9A;&#x65F6;&#x5411;monitor&#x8BB0;&#x5F55;&#x63A5;&#x53E3;&#x7684;&#x8C03;&#x7528;&#x6B21;&#x6570;&#x548C;&#x65F6;&#x95F4;&#x4FE1;&#x606F;</li>
+<li>&#x62FF;&#x5230;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x4E4B;&#x540E;&#xFF0C;consumer&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x53D1;&#x8D77;&#x63A5;&#x53E3;&#x8C03;&#x7528;</li>
+<li>provider&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x540E;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x8C03;&#x7528;&#x5177;&#x4F53;&#x7684;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kk41rxicIt92CwqJb5ba5n79lXLuwt4HsUuqGE5WbqoiaibMCFyJ1JKichbA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h3 id="dubbo&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;">Dubbo&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7B56;&#x7565;</h3>
+<ol>
+<li>&#x52A0;&#x6743;&#x968F;&#x673A;&#xFF1A;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x7EC4;&#x670D;&#x52A1;&#x5668; servers = [A, B, C]&#xFF0C;&#x4ED6;&#x4EEC;&#x5BF9;&#x5E94;&#x7684;&#x6743;&#x91CD;&#x4E3A; weights = [5, 3, 2]&#xFF0C;&#x6743;&#x91CD;&#x603B;&#x548C;&#x4E3A;10&#x3002;&#x73B0;&#x5728;&#x628A;&#x8FD9;&#x4E9B;&#x6743;&#x91CD;&#x503C;&#x5E73;&#x94FA;&#x5728;&#x4E00;&#x7EF4;&#x5750;&#x6807;&#x503C;&#x4E0A;&#xFF0C;[0, 5) &#x533A;&#x95F4;&#x5C5E;&#x4E8E;&#x670D;&#x52A1;&#x5668; A&#xFF0C;[5, 8) &#x533A;&#x95F4;&#x5C5E;&#x4E8E;&#x670D;&#x52A1;&#x5668; B&#xFF0C;[8, 10) &#x533A;&#x95F4;&#x5C5E;&#x4E8E;&#x670D;&#x52A1;&#x5668; C&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x901A;&#x8FC7;&#x968F;&#x673A;&#x6570;&#x751F;&#x6210;&#x5668;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x8303;&#x56F4;&#x5728; [0, 10) &#x4E4B;&#x95F4;&#x7684;&#x968F;&#x673A;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x8FD9;&#x4E2A;&#x968F;&#x673A;&#x6570;&#x4F1A;&#x843D;&#x5230;&#x54EA;&#x4E2A;&#x533A;&#x95F4;&#x4E0A;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</li>
+<li>&#x6700;&#x5C0F;&#x6D3B;&#x8DC3;&#x6570;&#xFF1A;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x6D3B;&#x8DC3;&#x6570; active&#xFF0C;&#x521D;&#x59CB;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6240;&#x6709;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x6D3B;&#x8DC3;&#x6570;&#x5747;&#x4E3A;0&#x3002;&#x6BCF;&#x6536;&#x5230;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#xFF0C;&#x6D3B;&#x8DC3;&#x6570;&#x52A0;1&#xFF0C;&#x5B8C;&#x6210;&#x8BF7;&#x6C42;&#x540E;&#x5219;&#x5C06;&#x6D3B;&#x8DC3;&#x6570;&#x51CF;1&#x3002;&#x5728;&#x670D;&#x52A1;&#x8FD0;&#x884C;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x6027;&#x80FD;&#x597D;&#x7684;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x7684;&#x901F;&#x5EA6;&#x66F4;&#x5FEB;&#xFF0C;&#x56E0;&#x6B64;&#x6D3B;&#x8DC3;&#x6570;&#x4E0B;&#x964D;&#x7684;&#x4E5F;&#x8D8A;&#x5FEB;&#xFF0C;&#x6B64;&#x65F6;&#x8FD9;&#x6837;&#x7684;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x80FD;&#x591F;&#x4F18;&#x5148;&#x83B7;&#x53D6;&#x5230;&#x65B0;&#x7684;&#x670D;&#x52A1;&#x8BF7;&#x6C42;&#x3002;</li>
+<li>&#x4E00;&#x81F4;&#x6027;hash&#xFF1A;&#x901A;&#x8FC7;hash&#x7B97;&#x6CD5;&#xFF0C;&#x628A;provider&#x7684;invoke&#x548C;&#x968F;&#x673A;&#x8282;&#x70B9;&#x751F;&#x6210;hash&#xFF0C;&#x5E76;&#x5C06;&#x8FD9;&#x4E2A; hash &#x6295;&#x5C04;&#x5230; [0, 2^32 - 1] &#x7684;&#x5706;&#x73AF;&#x4E0A;&#xFF0C;&#x67E5;&#x8BE2;&#x7684;&#x65F6;&#x5019;&#x6839;&#x636E;key&#x8FDB;&#x884C;md5&#x7136;&#x540E;&#x8FDB;&#x884C;hash&#xFF0C;&#x5F97;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x503C;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#x5F53;&#x524D;hash&#x7684;invoker&#x3002;</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kk1QVvVs2sxZrJeEPQJ4icjpsPET1KdeItR7IGdRcXFSD1lCS0eIIJKlA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img">&#x56FE;&#x7247;&#x6765;&#x81EA;dubbo&#x5B98;&#x65B9;</p>
+<ol>
+<li>&#x52A0;&#x6743;&#x8F6E;&#x8BE2;&#xFF1A;&#x6BD4;&#x5982;&#x670D;&#x52A1;&#x5668; A&#x3001;B&#x3001;C &#x6743;&#x91CD;&#x6BD4;&#x4E3A; 5:2:1&#xFF0C;&#x90A3;&#x4E48;&#x5728;8&#x6B21;&#x8BF7;&#x6C42;&#x4E2D;&#xFF0C;&#x670D;&#x52A1;&#x5668; A &#x5C06;&#x6536;&#x5230;&#x5176;&#x4E2D;&#x7684;5&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;&#x670D;&#x52A1;&#x5668; B &#x4F1A;&#x6536;&#x5230;&#x5176;&#x4E2D;&#x7684;2&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;&#x670D;&#x52A1;&#x5668; C &#x5219;&#x6536;&#x5230;&#x5176;&#x4E2D;&#x7684;1&#x6B21;&#x8BF7;&#x6C42;&#x3002;</li>
+</ol>
+<h3 id="&#x96C6;&#x7FA4;&#x5BB9;&#x9519;">&#x96C6;&#x7FA4;&#x5BB9;&#x9519;</h3>
+<ol>
+<li>Failover Cluster&#x5931;&#x8D25;&#x81EA;&#x52A8;&#x5207;&#x6362;&#xFF1A;dubbo&#x7684;&#x9ED8;&#x8BA4;&#x5BB9;&#x9519;&#x65B9;&#x6848;&#xFF0C;&#x5F53;&#x8C03;&#x7528;&#x5931;&#x8D25;&#x65F6;&#x81EA;&#x52A8;&#x5207;&#x6362;&#x5230;&#x5176;&#x4ED6;&#x53EF;&#x7528;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x5177;&#x4F53;&#x7684;&#x91CD;&#x8BD5;&#x6B21;&#x6570;&#x548C;&#x95F4;&#x9694;&#x65F6;&#x95F4;&#x53EF;&#x7528;&#x901A;&#x8FC7;&#x5F15;&#x7528;&#x670D;&#x52A1;&#x7684;&#x65F6;&#x5019;&#x914D;&#x7F6E;&#xFF0C;&#x9ED8;&#x8BA4;&#x91CD;&#x8BD5;&#x6B21;&#x6570;&#x4E3A;1&#x4E5F;&#x5C31;&#x662F;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;</li>
+<li>Failback Cluster&#x5FEB;&#x901F;&#x5931;&#x8D25;&#xFF1A;&#x5728;&#x8C03;&#x7528;&#x5931;&#x8D25;&#xFF0C;&#x8BB0;&#x5F55;&#x65E5;&#x5FD7;&#x548C;&#x8C03;&#x7528;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x7A7A;&#x7ED3;&#x679C;&#x7ED9;consumer&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x6BCF;&#x9694;5&#x79D2;&#x5BF9;&#x5931;&#x8D25;&#x7684;&#x8C03;&#x7528;&#x8FDB;&#x884C;&#x91CD;&#x8BD5;</li>
+<li>Failfast Cluster&#x5931;&#x8D25;&#x81EA;&#x52A8;&#x6062;&#x590D;&#xFF1A;&#x53EA;&#x4F1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x5931;&#x8D25;&#x540E;&#x7ACB;&#x523B;&#x629B;&#x51FA;&#x5F02;&#x5E38;</li>
+<li>Failsafe Cluster&#x5931;&#x8D25;&#x5B89;&#x5168;&#xFF1A;&#x8C03;&#x7528;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#xFF0C;&#x8BB0;&#x5F55;&#x65E5;&#x5FD7;&#x4E0D;&#x629B;&#x51FA;&#xFF0C;&#x8FD4;&#x56DE;&#x7A7A;&#x7ED3;&#x679C;</li>
+<li>Forking Cluster&#x5E76;&#x884C;&#x8C03;&#x7528;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#xFF1A;&#x901A;&#x8FC7;&#x7EBF;&#x7A0B;&#x6C60;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x5E76;&#x53D1;&#x8C03;&#x7528;&#x591A;&#x4E2A;provider&#xFF0C;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5230;&#x963B;&#x585E;&#x961F;&#x5217;&#xFF0C;&#x53EA;&#x8981;&#x6709;&#x4E00;&#x4E2A;provider&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x4E86;&#x7ED3;&#x679C;&#xFF0C;&#x5C31;&#x4F1A;&#x7ACB;&#x523B;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;</li>
+<li>Broadcast Cluster&#x5E7F;&#x64AD;&#x6A21;&#x5F0F;&#xFF1A;&#x9010;&#x4E2A;&#x8C03;&#x7528;&#x6BCF;&#x4E2A;provider&#xFF0C;&#x5982;&#x679C;&#x5176;&#x4E2D;&#x4E00;&#x53F0;&#x62A5;&#x9519;&#xFF0C;&#x5728;&#x5FAA;&#x73AF;&#x8C03;&#x7528;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;</li>
+</ol>
+<h2 id="&#x6D88;&#x606F;&#x961F;&#x5217;">&#x6D88;&#x606F;&#x961F;&#x5217;</h2>
+<p>&#x5BF9;&#x4E8E;MQ&#x7684;&#x4F5C;&#x7528;&#x5927;&#x5BB6;&#x90FD;&#x5E94;&#x8BE5;&#x5F88;&#x4E86;&#x89E3;&#x4E86;&#xFF0C;&#x524A;&#x5CF0;&#x586B;&#x8C37;&#x3001;&#x89E3;&#x8026;&#x3002;&#x4F9D;&#x8D56;&#x6D88;&#x606F;&#x961F;&#x5217;&#xFF0C;&#x540C;&#x6B65;&#x8F6C;&#x5F02;&#x6B65;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x964D;&#x4F4E;&#x5FAE;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x7684;&#x8026;&#x5408;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x4E00;&#x4E9B;&#x4E0D;&#x9700;&#x8981;&#x540C;&#x6B65;&#x6267;&#x884C;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5F15;&#x5165;&#x6D88;&#x606F;&#x961F;&#x5217;&#x7684;&#x65B9;&#x5F0F;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x4EE5;&#x63D0;&#x9AD8;&#x63A5;&#x53E3;&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#x3002;&#x5728;&#x4EA4;&#x6613;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x9700;&#x8981;&#x6263;&#x5E93;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x7ED9;&#x4F1A;&#x5458;&#x53D1;&#x653E;&#x79EF;&#x5206;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#xFF0C;&#x53D1;&#x79EF;&#x5206;&#x7684;&#x52A8;&#x4F5C;&#x5E94;&#x8BE5;&#x5C5E;&#x4E8E;&#x5C65;&#x7EA6;&#x670D;&#x52A1;&#xFF0C;&#x5BF9;&#x5B9E;&#x65F6;&#x6027;&#x7684;&#x8981;&#x6C42;&#x4E5F;&#x4E0D;&#x9AD8;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x8981;&#x4FDD;&#x8BC1;&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;&#x4E5F;&#x5C31;&#x662F;&#x80FD;&#x5C65;&#x7EA6;&#x6210;&#x529F;&#x5C31;&#x884C;&#x4E86;&#x3002;&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x540C;&#x7C7B;&#x6027;&#x8D28;&#x7684;&#x8BF7;&#x6C42;&#x5C31;&#x53EF;&#x4EE5;&#x8D70;MQ&#x5F02;&#x6B65;&#xFF0C;&#x4E5F;&#x5C31;&#x63D0;&#x9AD8;&#x4E86;&#x7CFB;&#x7EDF;&#x6297;&#x538B;&#x80FD;&#x529B;&#x4E86;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkFWU0aHOicpRW060Dia8mcMrKmkmZn55GsdYzHNS3xVDRhMopSZAjiaRIA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x5BF9;&#x4E8E;&#x6D88;&#x606F;&#x961F;&#x5217;&#x800C;&#x8A00;&#xFF0C;&#x600E;&#x4E48;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x4FDD;&#x8BC1;&#x6D88;&#x606F;&#x7684;&#x53EF;&#x9760;&#x6027;&#x3001;&#x4E0D;&#x4E22;&#x5931;&#xFF1F;</p>
+<h3 id="&#x6D88;&#x606F;&#x53EF;&#x9760;&#x6027;">&#x6D88;&#x606F;&#x53EF;&#x9760;&#x6027;</h3>
+<p>&#x6D88;&#x606F;&#x4E22;&#x5931;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x5728;&#x751F;&#x4EA7;&#x8005;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x3001;MQ&#x672C;&#x8EAB;&#x4E22;&#x5931;&#x6D88;&#x606F;&#x3001;&#x6D88;&#x8D39;&#x8005;&#x4E22;&#x5931;&#x6D88;&#x606F;3&#x4E2A;&#x65B9;&#x9762;&#x3002;</p>
+<p><strong>&#x751F;&#x4EA7;&#x8005;&#x4E22;&#x5931;</strong></p>
+<p>&#x751F;&#x4EA7;&#x8005;&#x4E22;&#x5931;&#x6D88;&#x606F;&#x7684;&#x53EF;&#x80FD;&#x70B9;&#x5728;&#x4E8E;&#x7A0B;&#x5E8F;&#x53D1;&#x9001;&#x5931;&#x8D25;&#x629B;&#x5F02;&#x5E38;&#x4E86;&#x6CA1;&#x6709;&#x91CD;&#x8BD5;&#x5904;&#x7406;&#xFF0C;&#x6216;&#x8005;&#x53D1;&#x9001;&#x7684;&#x8FC7;&#x7A0B;&#x6210;&#x529F;&#x4F46;&#x662F;&#x8FC7;&#x7A0B;&#x4E2D;&#x7F51;&#x7EDC;&#x95EA;&#x65AD;MQ&#x6CA1;&#x6536;&#x5230;&#xFF0C;&#x6D88;&#x606F;&#x5C31;&#x4E22;&#x5931;&#x4E86;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x540C;&#x6B65;&#x53D1;&#x9001;&#x7684;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x8003;&#x8651;&#x540C;&#x6B65;&#x53D1;&#x9001;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x57FA;&#x4E8E;&#x5F02;&#x6B65;&#x53D1;&#x9001;&#x7684;&#x573A;&#x666F;&#x6765;&#x8BF4;&#x3002;</p>
+<p>&#x5F02;&#x6B65;&#x53D1;&#x9001;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x65B9;&#x5F0F;&#xFF1A;<strong>&#x5F02;&#x6B65;&#x6709;&#x56DE;&#x8C03;&#x548C;&#x5F02;&#x6B65;&#x65E0;&#x56DE;&#x8C03;</strong>&#xFF0C;&#x65E0;&#x56DE;&#x8C03;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x751F;&#x4EA7;&#x8005;&#x53D1;&#x9001;&#x5B8C;&#x540E;&#x4E0D;&#x7BA1;&#x7ED3;&#x679C;&#x53EF;&#x80FD;&#x5C31;&#x4F1A;&#x9020;&#x6210;&#x6D88;&#x606F;&#x4E22;&#x5931;&#xFF0C;&#x800C;&#x901A;&#x8FC7;&#x5F02;&#x6B65;&#x53D1;&#x9001;+&#x56DE;&#x8C03;&#x901A;&#x77E5;+&#x672C;&#x5730;&#x6D88;&#x606F;&#x8868;&#x7684;&#x5F62;&#x5F0F;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x505A;&#x51FA;&#x4E00;&#x4E2A;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;&#x4EE5;&#x4E0B;&#x5355;&#x7684;&#x573A;&#x666F;&#x4E3E;&#x4F8B;&#x3002;</p>
+<ol>
+<li>&#x4E0B;&#x5355;&#x540E;&#x5148;&#x4FDD;&#x5B58;&#x672C;&#x5730;&#x6570;&#x636E;&#x548C;MQ&#x6D88;&#x606F;&#x8868;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x6D88;&#x606F;&#x7684;&#x72B6;&#x6001;&#x662F;&#x53D1;&#x9001;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x672C;&#x5730;&#x4E8B;&#x52A1;&#x5931;&#x8D25;&#xFF0C;&#x90A3;&#x4E48;&#x4E0B;&#x5355;&#x5931;&#x8D25;&#xFF0C;&#x4E8B;&#x52A1;&#x56DE;&#x6EDA;&#x3002;</li>
+<li>&#x4E0B;&#x5355;&#x6210;&#x529F;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x5BA2;&#x6237;&#x7AEF;&#x6210;&#x529F;&#xFF0C;&#x5F02;&#x6B65;&#x53D1;&#x9001;MQ&#x6D88;&#x606F;</li>
+<li>MQ&#x56DE;&#x8C03;&#x901A;&#x77E5;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7ED3;&#x679C;&#xFF0C;&#x5BF9;&#x5E94;&#x66F4;&#x65B0;&#x6570;&#x636E;&#x5E93;MQ&#x53D1;&#x9001;&#x72B6;&#x6001;</li>
+<li>JOB&#x8F6E;&#x8BE2;&#x8D85;&#x8FC7;&#x4E00;&#x5B9A;&#x65F6;&#x95F4;&#xFF08;&#x65F6;&#x95F4;&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x914D;&#x7F6E;&#xFF09;&#x8FD8;&#x672A;&#x53D1;&#x9001;&#x6210;&#x529F;&#x7684;&#x6D88;&#x606F;&#x53BB;&#x91CD;&#x8BD5;</li>
+<li>&#x5728;&#x76D1;&#x63A7;&#x5E73;&#x53F0;&#x914D;&#x7F6E;&#x6216;&#x8005;JOB&#x7A0B;&#x5E8F;&#x5904;&#x7406;&#x8D85;&#x8FC7;&#x4E00;&#x5B9A;&#x6B21;&#x6570;&#x4E00;&#x76F4;&#x53D1;&#x9001;&#x4E0D;&#x6210;&#x529F;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x544A;&#x8B66;&#xFF0C;&#x4EBA;&#x5DE5;&#x4ECB;&#x5165;&#x3002;</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kk9gGB29FSkPy3JjePL6unswd8kLcZPk29SjNNOgjems7SMkbHpRIUrQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img">&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF0C;&#x5BF9;&#x4E8E;&#x5927;&#x90E8;&#x5206;&#x573A;&#x666F;&#x6765;&#x8BF4;&#x5F02;&#x6B65;&#x56DE;&#x8C03;&#x7684;&#x5F62;&#x5F0F;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x53EA;&#x6709;&#x90A3;&#x79CD;&#x9700;&#x8981;&#x5B8C;&#x5168;&#x4FDD;&#x8BC1;&#x4E0D;&#x80FD;&#x4E22;&#x5931;&#x6D88;&#x606F;&#x7684;&#x573A;&#x666F;&#x6211;&#x4EEC;&#x505A;&#x4E00;&#x5957;&#x5B8C;&#x6574;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</p>
+<p><strong>MQ&#x4E22;&#x5931;</strong></p>
+<p>&#x5982;&#x679C;&#x751F;&#x4EA7;&#x8005;&#x4FDD;&#x8BC1;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x5230;MQ&#xFF0C;&#x800C;MQ&#x6536;&#x5230;&#x6D88;&#x606F;&#x540E;&#x8FD8;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5B95;&#x673A;&#x4E86;&#x53C8;&#x6CA1;&#x6765;&#x5F97;&#x53CA;&#x540C;&#x6B65;&#x7ED9;&#x4ECE;&#x8282;&#x70B9;&#xFF0C;&#x5C31;&#x6709;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x6D88;&#x606F;&#x4E22;&#x5931;&#x3002;</p>
+<p>&#x6BD4;&#x5982;RocketMQ&#xFF1A;</p>
+<p>RocketMQ&#x5206;&#x4E3A;&#x540C;&#x6B65;&#x5237;&#x76D8;&#x548C;&#x5F02;&#x6B65;&#x5237;&#x76D8;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684;&#x662F;&#x5F02;&#x6B65;&#x5237;&#x76D8;&#xFF0C;&#x5C31;&#x6709;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x6D88;&#x606F;&#x8FD8;&#x672A;&#x5237;&#x5230;&#x786C;&#x76D8;&#x4E0A;&#x5C31;&#x4E22;&#x5931;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x4E3A;&#x540C;&#x6B65;&#x5237;&#x76D8;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x4FDD;&#x8BC1;&#x6D88;&#x606F;&#x53EF;&#x9760;&#x6027;&#xFF0C;&#x8FD9;&#x6837;&#x5373;&#x4F7F;MQ&#x6302;&#x4E86;&#xFF0C;&#x6062;&#x590D;&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x53EF;&#x4EE5;&#x4ECE;&#x78C1;&#x76D8;&#x4E2D;&#x53BB;&#x6062;&#x590D;&#x6D88;&#x606F;&#x3002;</p>
+<p>&#x6BD4;&#x5982;Kafka&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x505A;&#x5230;&#xFF1A;</p>
+<pre><code>acks=all &#x53EA;&#x6709;&#x53C2;&#x4E0E;&#x590D;&#x5236;&#x7684;&#x6240;&#x6709;&#x8282;&#x70B9;&#x5168;&#x90E8;&#x6536;&#x5230;&#x6D88;&#x606F;&#xFF0C;&#x624D;&#x8FD4;&#x56DE;&#x751F;&#x4EA7;&#x8005;&#x6210;&#x529F;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#x9664;&#x975E;&#x6240;&#x6709;&#x7684;&#x8282;&#x70B9;&#x90FD;&#x6302;&#x4E86;&#xFF0C;&#x6D88;&#x606F;&#x624D;&#x4F1A;&#x4E22;&#x5931;&#x3002;
+replication.factor=N,&#x8BBE;&#x7F6E;&#x5927;&#x4E8E;1&#x7684;&#x6570;&#xFF0C;&#x8FD9;&#x4F1A;&#x8981;&#x6C42;&#x6BCF;&#x4E2A;partion&#x81F3;&#x5C11;&#x6709;2&#x4E2A;&#x526F;&#x672C;
+min.insync.replicas=N&#xFF0C;&#x8BBE;&#x7F6E;&#x5927;&#x4E8E;1&#x7684;&#x6570;&#xFF0C;&#x8FD9;&#x4F1A;&#x8981;&#x6C42;leader&#x81F3;&#x5C11;&#x611F;&#x77E5;&#x5230;&#x4E00;&#x4E2A;follower&#x8FD8;&#x4FDD;&#x6301;&#x7740;&#x8FDE;&#x63A5;
+retries=N&#xFF0C;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x5927;&#x7684;&#x503C;&#xFF0C;&#x8BA9;&#x751F;&#x4EA7;&#x8005;&#x53D1;&#x9001;&#x5931;&#x8D25;&#x4E00;&#x76F4;&#x91CD;&#x8BD5;
+</code></pre><p>&#x867D;&#x7136;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8FBE;&#x5230;MQ&#x672C;&#x8EAB;&#x9AD8;&#x53EF;&#x7528;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x90FD;&#x5BF9;&#x6027;&#x80FD;&#x6709;&#x635F;&#x8017;&#xFF0C;&#x600E;&#x6837;&#x914D;&#x7F6E;&#x9700;&#x8981;&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x505A;&#x51FA;&#x6743;&#x8861;&#x3002;</p>
+<p><strong>&#x6D88;&#x8D39;&#x8005;&#x4E22;&#x5931;</strong></p>
+<p>&#x6D88;&#x8D39;&#x8005;&#x4E22;&#x5931;&#x6D88;&#x606F;&#x7684;&#x573A;&#x666F;&#xFF1A;&#x6D88;&#x8D39;&#x8005;&#x521A;&#x6536;&#x5230;&#x6D88;&#x606F;&#xFF0C;&#x6B64;&#x65F6;&#x670D;&#x52A1;&#x5668;&#x5B95;&#x673A;&#xFF0C;MQ&#x8BA4;&#x4E3A;&#x6D88;&#x8D39;&#x8005;&#x5DF2;&#x7ECF;&#x6D88;&#x8D39;&#xFF0C;&#x4E0D;&#x4F1A;&#x91CD;&#x590D;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF0C;&#x6D88;&#x606F;&#x4E22;&#x5931;&#x3002;</p>
+<p>RocketMQ&#x9ED8;&#x8BA4;&#x662F;&#x9700;&#x8981;&#x6D88;&#x8D39;&#x8005;&#x56DE;&#x590D;ack&#x786E;&#x8BA4;&#xFF0C;&#x800C;kafka&#x9700;&#x8981;&#x624B;&#x52A8;&#x5F00;&#x542F;&#x914D;&#x7F6E;&#x5173;&#x95ED;&#x81EA;&#x52A8;offset&#x3002;</p>
+<p>&#x6D88;&#x8D39;&#x65B9;&#x4E0D;&#x8FD4;&#x56DE;ack&#x786E;&#x8BA4;&#xFF0C;&#x91CD;&#x53D1;&#x7684;&#x673A;&#x5236;&#x6839;&#x636E;MQ&#x7C7B;&#x578B;&#x7684;&#x4E0D;&#x540C;&#x53D1;&#x9001;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x3001;&#x6B21;&#x6570;&#x90FD;&#x4E0D;&#x5C3D;&#x76F8;&#x540C;&#xFF0C;&#x5982;&#x679C;&#x91CD;&#x8BD5;&#x8D85;&#x8FC7;&#x6B21;&#x6570;&#x4E4B;&#x540E;&#x4F1A;&#x8FDB;&#x5165;&#x6B7B;&#x4FE1;&#x961F;&#x5217;&#xFF0C;&#x9700;&#x8981;&#x624B;&#x5DE5;&#x6765;&#x5904;&#x7406;&#x4E86;&#x3002;&#xFF08;Kafka&#x6CA1;&#x6709;&#x8FD9;&#x4E9B;&#xFF09;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkYciaSwqSeS3ibo1ZQ81cQcPd5X9F5Hejic40iaREib8Z0YgCBUtNR6SEibzw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h3 id="&#x6D88;&#x606F;&#x7684;&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;">&#x6D88;&#x606F;&#x7684;&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;</h3>
+<p>&#x4E8B;&#x52A1;&#x6D88;&#x606F;&#x53EF;&#x4EE5;&#x8FBE;&#x5230;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x7684;&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x4E8B;&#x52A1;&#x6D88;&#x606F;&#x5C31;&#x662F;MQ&#x63D0;&#x4F9B;&#x7684;&#x7C7B;&#x4F3C;XA&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x80FD;&#x529B;&#x3002;</p>
+<p>&#x534A;&#x4E8B;&#x52A1;&#x6D88;&#x606F;&#x5C31;&#x662F;MQ&#x6536;&#x5230;&#x4E86;&#x751F;&#x4EA7;&#x8005;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x6536;&#x5230;&#x4E8C;&#x6B21;&#x786E;&#x8BA4;&#xFF0C;&#x4E0D;&#x80FD;&#x6295;&#x9012;&#x7684;&#x6D88;&#x606F;&#x3002;</p>
+<p>&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li>&#x751F;&#x4EA7;&#x8005;&#x5148;&#x53D1;&#x9001;&#x4E00;&#x6761;&#x534A;&#x4E8B;&#x52A1;&#x6D88;&#x606F;&#x5230;MQ</li>
+<li>MQ&#x6536;&#x5230;&#x6D88;&#x606F;&#x540E;&#x8FD4;&#x56DE;ack&#x786E;&#x8BA4;</li>
+<li>&#x751F;&#x4EA7;&#x8005;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x672C;&#x5730;&#x4E8B;&#x52A1;</li>
+<li>&#x5982;&#x679C;&#x4E8B;&#x52A1;&#x6267;&#x884C;&#x6210;&#x529F;&#x53D1;&#x9001;commit&#x5230;MQ&#xFF0C;&#x5931;&#x8D25;&#x53D1;&#x9001;rollback</li>
+<li>&#x5982;&#x679C;MQ&#x957F;&#x65F6;&#x95F4;&#x672A;&#x6536;&#x5230;&#x751F;&#x4EA7;&#x8005;&#x7684;&#x4E8C;&#x6B21;&#x786E;&#x8BA4;commit&#x6216;&#x8005;rollback&#xFF0C;MQ&#x5BF9;&#x751F;&#x4EA7;&#x8005;&#x53D1;&#x8D77;&#x6D88;&#x606F;&#x56DE;&#x67E5;</li>
+<li>&#x751F;&#x4EA7;&#x8005;&#x67E5;&#x8BE2;&#x4E8B;&#x52A1;&#x6267;&#x884C;&#x6700;&#x7EC8;&#x72B6;&#x6001;</li>
+<li>&#x6839;&#x636E;&#x67E5;&#x8BE2;&#x4E8B;&#x52A1;&#x72B6;&#x6001;&#x518D;&#x6B21;&#x63D0;&#x4EA4;&#x4E8C;&#x6B21;&#x786E;&#x8BA4;</li>
+</ol>
+<p>&#x6700;&#x7EC8;&#xFF0C;&#x5982;&#x679C;MQ&#x6536;&#x5230;&#x4E8C;&#x6B21;&#x786E;&#x8BA4;commit&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x628A;&#x6D88;&#x606F;&#x6295;&#x9012;&#x7ED9;&#x6D88;&#x8D39;&#x8005;&#xFF0C;&#x53CD;&#x4E4B;&#x5982;&#x679C;&#x662F;rollback&#xFF0C;&#x6D88;&#x606F;&#x4F1A;&#x4FDD;&#x5B58;&#x4E0B;&#x6765;&#x5E76;&#x4E14;&#x5728;3&#x5929;&#x540E;&#x88AB;&#x5220;&#x9664;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kk5740GsBgdC0hibChyUFECjFkGI1Egk2B7003iauZQtcWTl605rbbeFMA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h2 id="&#x6570;&#x636E;&#x5E93;">&#x6570;&#x636E;&#x5E93;</h2>
+<p>&#x5BF9;&#x4E8E;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x800C;&#x8A00;&#xFF0C;&#x6700;&#x7EC8;&#x6240;&#x6709;&#x7684;&#x6D41;&#x91CF;&#x7684;&#x67E5;&#x8BE2;&#x548C;&#x5199;&#x5165;&#x90FD;&#x843D;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E0A;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x662F;&#x652F;&#x6491;&#x7CFB;&#x7EDF;&#x9AD8;&#x5E76;&#x53D1;&#x80FD;&#x529B;&#x7684;&#x6838;&#x5FC3;&#x3002;&#x600E;&#x4E48;&#x964D;&#x4F4E;&#x6570;&#x636E;&#x5E93;&#x7684;&#x538B;&#x529B;&#xFF0C;&#x63D0;&#x5347;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6027;&#x80FD;&#x662F;&#x652F;&#x6491;&#x9AD8;&#x5E76;&#x53D1;&#x7684;&#x57FA;&#x77F3;&#x3002;&#x4E3B;&#x8981;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x548C;&#x5206;&#x5E93;&#x5206;&#x8868;&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x800C;&#x8A00;&#xFF0C;&#x6D41;&#x91CF;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E2A;&#x6F0F;&#x6597;&#x7684;&#x5F62;&#x5F0F;&#x3002;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x7684;&#x65E5;&#x6D3B;&#x7528;&#x6237;DAU&#x6709;20&#x4E07;&#xFF0C;&#x5B9E;&#x9645;&#x53EF;&#x80FD;&#x6BCF;&#x5929;&#x6765;&#x5230;&#x63D0;&#x5355;&#x9875;&#x7684;&#x7528;&#x6237;&#x53EA;&#x6709;3&#x4E07;QPS&#xFF0C;&#x6700;&#x7EC8;&#x8F6C;&#x5316;&#x5230;&#x4E0B;&#x5355;&#x652F;&#x4ED8;&#x6210;&#x529F;&#x7684;QPS&#x53EA;&#x6709;1&#x4E07;&#x3002;&#x90A3;&#x4E48;&#x5BF9;&#x4E8E;&#x7CFB;&#x7EDF;&#x6765;&#x8BF4;&#x8BFB;&#x662F;&#x5927;&#x4E8E;&#x5199;&#x7684;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x964D;&#x4F4E;&#x6570;&#x636E;&#x5E93;&#x7684;&#x538B;&#x529B;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkjJm1HxOHS75FLwFmNAXmNqhkwbCeBcUok16Kmr4a4M9rXF93sN1IHQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x4E5F;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x6570;&#x636E;&#x5E93;&#x96C6;&#x7FA4;&#x7684;&#x65B9;&#x5F0F;&#x964D;&#x4F4E;&#x4E86;&#x5355;&#x8282;&#x70B9;&#x7684;&#x538B;&#x529B;&#x3002;&#x800C;&#x9762;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x6025;&#x5267;&#x589E;&#x957F;&#xFF0C;&#x539F;&#x6765;&#x7684;&#x5355;&#x5E93;&#x5355;&#x8868;&#x7684;&#x5B58;&#x50A8;&#x65B9;&#x5F0F;&#x5DF2;&#x7ECF;&#x65E0;&#x6CD5;&#x652F;&#x6491;&#x6574;&#x4E2A;&#x4E1A;&#x52A1;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x5206;&#x5E93;&#x5206;&#x8868;&#x4E86;&#x3002;&#x9488;&#x5BF9;&#x5FAE;&#x670D;&#x52A1;&#x800C;&#x8A00;&#x5782;&#x76F4;&#x7684;&#x5206;&#x5E93;&#x672C;&#x8EAB;&#x5DF2;&#x7ECF;&#x662F;&#x505A;&#x8FC7;&#x7684;&#xFF0C;&#x5269;&#x4E0B;&#x5927;&#x90E8;&#x5206;&#x90FD;&#x662F;&#x5206;&#x8868;&#x7684;&#x65B9;&#x6848;&#x4E86;&#x3002;</p>
+<h3 id="&#x6C34;&#x5E73;&#x5206;&#x8868;">&#x6C34;&#x5E73;&#x5206;&#x8868;</h3>
+<p>&#x9996;&#x5148;&#x6839;&#x636E;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x6765;&#x51B3;&#x5B9A;&#x4F7F;&#x7528;&#x4EC0;&#x4E48;&#x5B57;&#x6BB5;&#x4F5C;&#x4E3A;&#x5206;&#x8868;&#x5B57;&#x6BB5;(sharding_key)&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x65E5;&#x8BA2;&#x5355;1000&#x4E07;&#xFF0C;&#x6211;&#x4EEC;&#x5927;&#x90E8;&#x5206;&#x7684;&#x573A;&#x666F;&#x6765;&#x6E90;&#x4E8E;C&#x7AEF;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7528;user_id&#x4F5C;&#x4E3A;sharding_key&#xFF0C;&#x6570;&#x636E;&#x67E5;&#x8BE2;&#x652F;&#x6301;&#x5230;&#x6700;&#x8FD1;3&#x4E2A;&#x6708;&#x7684;&#x8BA2;&#x5355;&#xFF0C;&#x8D85;&#x8FC7;3&#x4E2A;&#x6708;&#x7684;&#x505A;&#x5F52;&#x6863;&#x5904;&#x7406;&#xFF0C;&#x90A3;&#x4E48;3&#x4E2A;&#x6708;&#x7684;&#x6570;&#x636E;&#x91CF;&#x5C31;&#x662F;9&#x4EBF;&#xFF0C;&#x53EF;&#x4EE5;&#x5206;1024&#x5F20;&#x8868;&#xFF0C;&#x90A3;&#x4E48;&#x6BCF;&#x5F20;&#x8868;&#x7684;&#x6570;&#x636E;&#x5927;&#x6982;&#x5C31;&#x5728;100&#x4E07;&#x5DE6;&#x53F3;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x7528;&#x6237;id&#x4E3A;100&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x90FD;&#x7ECF;&#x8FC7;hash(100)&#xFF0C;&#x7136;&#x540E;&#x5BF9;1024&#x53D6;&#x6A21;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x843D;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x8868;&#x4E0A;&#x4E86;&#x3002;</p>
+<h3 id="&#x5206;&#x8868;&#x540E;&#x7684;id&#x552F;&#x4E00;&#x6027;">&#x5206;&#x8868;&#x540E;&#x7684;ID&#x552F;&#x4E00;&#x6027;</h3>
+<p>&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E3B;&#x952E;&#x9ED8;&#x8BA4;&#x90FD;&#x662F;&#x81EA;&#x589E;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5206;&#x8868;&#x4E4B;&#x540E;&#x7684;&#x4E3B;&#x952E;&#x5728;&#x4E0D;&#x540C;&#x8868;&#x5C31;&#x80AF;&#x5B9A;&#x4F1A;&#x6709;&#x51B2;&#x7A81;&#x4E86;&#x3002;&#x6709;&#x51E0;&#x4E2A;&#x529E;&#x6CD5;&#x8003;&#x8651;&#xFF1A;</p>
+<ol>
+<li>&#x8BBE;&#x5B9A;&#x6B65;&#x957F;&#xFF0C;&#x6BD4;&#x5982;1-1024&#x5F20;&#x8868;&#x6211;&#x4EEC;&#x5206;&#x522B;&#x8BBE;&#x5B9A;1-1024&#x7684;&#x57FA;&#x7840;&#x6B65;&#x957F;&#xFF0C;&#x8FD9;&#x6837;&#x4E3B;&#x952E;&#x843D;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x8868;&#x5C31;&#x4E0D;&#x4F1A;&#x51B2;&#x7A81;&#x4E86;&#x3002;</li>
+<li>&#x5206;&#x5E03;&#x5F0F;ID&#xFF0C;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x5957;&#x5206;&#x5E03;&#x5F0F;ID&#x751F;&#x6210;&#x7B97;&#x6CD5;&#x6216;&#x8005;&#x4F7F;&#x7528;&#x5F00;&#x6E90;&#x7684;&#x6BD4;&#x5982;&#x96EA;&#x82B1;&#x7B97;&#x6CD5;&#x8FD9;&#x79CD;</li>
+<li>&#x5206;&#x8868;&#x540E;&#x4E0D;&#x4F7F;&#x7528;&#x4E3B;&#x952E;&#x4F5C;&#x4E3A;&#x67E5;&#x8BE2;&#x4F9D;&#x636E;&#xFF0C;&#x800C;&#x662F;&#x6BCF;&#x5F20;&#x8868;&#x5355;&#x72EC;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x4F5C;&#x4E3A;&#x552F;&#x4E00;&#x4E3B;&#x952E;&#x4F7F;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#x8BA2;&#x5355;&#x8868;&#x8BA2;&#x5355;&#x53F7;&#x662F;&#x552F;&#x4E00;&#x7684;&#xFF0C;&#x4E0D;&#x7BA1;&#x6700;&#x7EC8;&#x843D;&#x5728;&#x54EA;&#x5F20;&#x8868;&#x90FD;&#x57FA;&#x4E8E;&#x8BA2;&#x5355;&#x53F7;&#x4F5C;&#x4E3A;&#x67E5;&#x8BE2;&#x4F9D;&#x636E;&#xFF0C;&#x66F4;&#x65B0;&#x4E5F;&#x4E00;&#x6837;&#x3002;</li>
+</ol>
+<h3 id="&#x4E3B;&#x4ECE;&#x540C;&#x6B65;&#x539F;&#x7406;">&#x4E3B;&#x4ECE;&#x540C;&#x6B65;&#x539F;&#x7406;</h3>
+<ol>
+<li>master&#x63D0;&#x4EA4;&#x5B8C;&#x4E8B;&#x52A1;&#x540E;&#xFF0C;&#x5199;&#x5165;binlog</li>
+<li>slave&#x8FDE;&#x63A5;&#x5230;master&#xFF0C;&#x83B7;&#x53D6;binlog</li>
+<li>master&#x521B;&#x5EFA;dump&#x7EBF;&#x7A0B;&#xFF0C;&#x63A8;&#x9001;binglog&#x5230;slave</li>
+<li>slave&#x542F;&#x52A8;&#x4E00;&#x4E2A;IO&#x7EBF;&#x7A0B;&#x8BFB;&#x53D6;&#x540C;&#x6B65;&#x8FC7;&#x6765;&#x7684;master&#x7684;binlog&#xFF0C;&#x8BB0;&#x5F55;&#x5230;relay log&#x4E2D;&#x7EE7;&#x65E5;&#x5FD7;&#x4E2D;</li>
+<li>slave&#x518D;&#x5F00;&#x542F;&#x4E00;&#x4E2A;sql&#x7EBF;&#x7A0B;&#x8BFB;&#x53D6;relay log&#x4E8B;&#x4EF6;&#x5E76;&#x5728;slave&#x6267;&#x884C;&#xFF0C;&#x5B8C;&#x6210;&#x540C;&#x6B65;</li>
+<li>slave&#x8BB0;&#x5F55;&#x81EA;&#x5DF1;&#x7684;binglog</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkqOMKE6hHYp3ia5JSQ92SwMdMeXYkzWSA5WAWjABhckice6Th8dvPo0aQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x7531;&#x4E8E;mysql&#x9ED8;&#x8BA4;&#x7684;&#x590D;&#x5236;&#x65B9;&#x5F0F;&#x662F;&#x5F02;&#x6B65;&#x7684;&#xFF0C;&#x4E3B;&#x5E93;&#x628A;&#x65E5;&#x5FD7;&#x53D1;&#x9001;&#x7ED9;&#x4ECE;&#x5E93;&#x540E;&#x4E0D;&#x5173;&#x5FC3;&#x4ECE;&#x5E93;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5904;&#x7406;&#xFF0C;&#x8FD9;&#x6837;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x662F;&#x5047;&#x8BBE;&#x4E3B;&#x5E93;&#x6302;&#x4E86;&#xFF0C;&#x4ECE;&#x5E93;&#x5904;&#x7406;&#x5931;&#x8D25;&#x4E86;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x4ECE;&#x5E93;&#x5347;&#x4E3A;&#x4E3B;&#x5E93;&#x540E;&#xFF0C;&#x65E5;&#x5FD7;&#x5C31;&#x4E22;&#x5931;&#x4E86;&#x3002;&#x7531;&#x6B64;&#x4EA7;&#x751F;&#x4E24;&#x4E2A;&#x6982;&#x5FF5;&#x3002;</p>
+<p><strong>&#x5168;&#x540C;&#x6B65;&#x590D;&#x5236;</strong></p>
+<p>&#x4E3B;&#x5E93;&#x5199;&#x5165;binlog&#x540E;&#x5F3A;&#x5236;&#x540C;&#x6B65;&#x65E5;&#x5FD7;&#x5230;&#x4ECE;&#x5E93;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x4ECE;&#x5E93;&#x90FD;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#x624D;&#x8FD4;&#x56DE;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x4F46;&#x662F;&#x5F88;&#x663E;&#x7136;&#x8FD9;&#x4E2A;&#x65B9;&#x5F0F;&#x7684;&#x8BDD;&#x6027;&#x80FD;&#x4F1A;&#x53D7;&#x5230;&#x4E25;&#x91CD;&#x5F71;&#x54CD;&#x3002;</p>
+<p><strong>&#x534A;&#x540C;&#x6B65;&#x590D;&#x5236;</strong></p>
+<p>&#x548C;&#x5168;&#x540C;&#x6B65;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x534A;&#x540C;&#x6B65;&#x590D;&#x5236;&#x7684;&#x903B;&#x8F91;&#x662F;&#x8FD9;&#x6837;&#xFF0C;&#x4ECE;&#x5E93;&#x5199;&#x5165;&#x65E5;&#x5FD7;&#x6210;&#x529F;&#x540E;&#x8FD4;&#x56DE;ACK&#x786E;&#x8BA4;&#x7ED9;&#x4E3B;&#x5E93;&#xFF0C;&#x4E3B;&#x5E93;&#x6536;&#x5230;&#x81F3;&#x5C11;&#x4E00;&#x4E2A;&#x4ECE;&#x5E93;&#x7684;&#x786E;&#x8BA4;&#x5C31;&#x8BA4;&#x4E3A;&#x5199;&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x3002;</p>
+<h2 id="&#x7F13;&#x5B58;">&#x7F13;&#x5B58;</h2>
+<p>&#x7F13;&#x5B58;&#x4F5C;&#x4E3A;&#x9AD8;&#x6027;&#x80FD;&#x7684;&#x4EE3;&#x8868;&#xFF0C;&#x5728;&#x67D0;&#x4E9B;&#x7279;&#x6B8A;&#x4E1A;&#x52A1;&#x53EF;&#x80FD;&#x627F;&#x62C5;90%&#x4EE5;&#x4E0A;&#x7684;&#x70ED;&#x70B9;&#x6D41;&#x91CF;&#x3002;&#x5BF9;&#x4E8E;&#x4E00;&#x4E9B;&#x6D3B;&#x52A8;&#x6BD4;&#x5982;&#x79D2;&#x6740;&#x8FD9;&#x79CD;&#x5E76;&#x53D1;QPS&#x53EF;&#x80FD;&#x51E0;&#x5341;&#x4E07;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x5F15;&#x5165;&#x7F13;&#x5B58;&#x4E8B;&#x5148;&#x9884;&#x70ED;&#x53EF;&#x4EE5;&#x5927;&#x5E45;&#x964D;&#x4F4E;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x7684;&#x538B;&#x529B;&#xFF0C;10&#x4E07;&#x7684;QPS&#x5BF9;&#x4E8E;&#x5355;&#x673A;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6765;&#x8BF4;&#x53EF;&#x80FD;&#x5C31;&#x6302;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x5982;redis&#x8FD9;&#x6837;&#x7684;&#x7F13;&#x5B58;&#x6765;&#x8BF4;&#x5C31;&#x5B8C;&#x5168;&#x4E0D;&#x662F;&#x95EE;&#x9898;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkeOicPzVFSOSE8eeVYOhBkyBO6HgibpicKt4Wjp3XMW4Ribe9tJK8C1Dibsw/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x4EE5;&#x79D2;&#x6740;&#x7CFB;&#x7EDF;&#x4E3E;&#x4F8B;&#xFF0C;&#x6D3B;&#x52A8;&#x9884;&#x70ED;&#x5546;&#x54C1;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x63D0;&#x524D;&#x7F13;&#x5B58;&#x63D0;&#x4F9B;&#x67E5;&#x8BE2;&#x670D;&#x52A1;&#xFF0C;&#x6D3B;&#x52A8;&#x5E93;&#x5B58;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x63D0;&#x524D;&#x7F13;&#x5B58;&#xFF0C;&#x4E0B;&#x5355;&#x6D41;&#x7A0B;&#x53EF;&#x4EE5;&#x5B8C;&#x5168;&#x8D70;&#x7F13;&#x5B58;&#x6263;&#x51CF;&#xFF0C;&#x79D2;&#x6740;&#x7ED3;&#x675F;&#x540E;&#x518D;&#x5F02;&#x6B65;&#x5199;&#x5165;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x627F;&#x62C5;&#x7684;&#x538B;&#x529B;&#x5C31;&#x5C0F;&#x7684;&#x592A;&#x591A;&#x4E86;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x5F15;&#x5165;&#x7F13;&#x5B58;&#x4E4B;&#x540E;&#x5C31;&#x8FD8;&#x8981;&#x8003;&#x8651;&#x7F13;&#x5B58;&#x51FB;&#x7A7F;&#x3001;&#x96EA;&#x5D29;&#x3001;&#x70ED;&#x70B9;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x95EE;&#x9898;&#x4E86;&#x3002;</p>
+<h3 id="&#x70ED;key&#x95EE;&#x9898;">&#x70ED;key&#x95EE;&#x9898;</h3>
+<p>&#x6240;&#x8C13;&#x70ED;key&#x95EE;&#x9898;&#x5C31;&#x662F;&#xFF0C;&#x7A81;&#x7136;&#x6709;&#x51E0;&#x5341;&#x4E07;&#x7684;&#x8BF7;&#x6C42;&#x53BB;&#x8BBF;&#x95EE;redis&#x4E0A;&#x7684;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;key&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x6837;&#x4F1A;&#x9020;&#x6210;&#x6D41;&#x91CF;&#x8FC7;&#x4E8E;&#x96C6;&#x4E2D;&#xFF0C;&#x8FBE;&#x5230;&#x7269;&#x7406;&#x7F51;&#x5361;&#x4E0A;&#x9650;&#xFF0C;&#x4ECE;&#x800C;&#x5BFC;&#x81F4;&#x8FD9;&#x53F0;redis&#x7684;&#x670D;&#x52A1;&#x5668;&#x5B95;&#x673A;&#x5F15;&#x53D1;&#x96EA;&#x5D29;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkzjJYCCmzPnU7tf0I6ssJeqJkShUfdKv9ASaFZ6ImncF639rV53Mu2A/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x9488;&#x5BF9;&#x70ED;key&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</p>
+<ol>
+<li>&#x63D0;&#x524D;&#x628A;&#x70ED;key&#x6253;&#x6563;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x964D;&#x4F4E;&#x538B;&#x529B;</li>
+<li>&#x52A0;&#x5165;&#x4E8C;&#x7EA7;&#x7F13;&#x5B58;&#xFF0C;&#x63D0;&#x524D;&#x52A0;&#x8F7D;&#x70ED;key&#x6570;&#x636E;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x5982;&#x679C;redis&#x5B95;&#x673A;&#xFF0C;&#x8D70;&#x5185;&#x5B58;&#x67E5;&#x8BE2;</li>
+</ol>
+<h3 id="&#x7F13;&#x5B58;&#x51FB;&#x7A7F;">&#x7F13;&#x5B58;&#x51FB;&#x7A7F;</h3>
+<p>&#x7F13;&#x5B58;&#x51FB;&#x7A7F;&#x7684;&#x6982;&#x5FF5;&#x5C31;&#x662F;&#x5355;&#x4E2A;key&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x8FC7;&#x9AD8;&#xFF0C;&#x8FC7;&#x671F;&#x65F6;&#x5BFC;&#x81F4;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x76F4;&#x63A5;&#x6253;&#x5230;db&#x4E0A;&#xFF0C;&#x8FD9;&#x4E2A;&#x548C;&#x70ED;key&#x7684;&#x95EE;&#x9898;&#x6BD4;&#x8F83;&#x7C7B;&#x4F3C;&#xFF0C;&#x53EA;&#x662F;&#x8BF4;&#x7684;&#x70B9;&#x5728;&#x4E8E;&#x8FC7;&#x671F;&#x5BFC;&#x81F4;&#x8BF7;&#x6C42;&#x5168;&#x90E8;&#x6253;&#x5230;DB&#x4E0A;&#x800C;&#x5DF2;&#x3002;</p>
+<p>&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</p>
+<ol>
+<li>&#x52A0;&#x9501;&#x66F4;&#x65B0;&#xFF0C;&#x6BD4;&#x5982;&#x8BF7;&#x6C42;&#x67E5;&#x8BE2;A&#xFF0C;&#x53D1;&#x73B0;&#x7F13;&#x5B58;&#x4E2D;&#x6CA1;&#x6709;&#xFF0C;&#x5BF9;A&#x8FD9;&#x4E2A;key&#x52A0;&#x9501;&#xFF0C;&#x540C;&#x65F6;&#x53BB;&#x6570;&#x636E;&#x5E93;&#x67E5;&#x8BE2;&#x6570;&#x636E;&#xFF0C;&#x5199;&#x5165;&#x7F13;&#x5B58;&#xFF0C;&#x518D;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#xFF0C;&#x8FD9;&#x6837;&#x540E;&#x9762;&#x7684;&#x8BF7;&#x6C42;&#x5C31;&#x53EF;&#x4EE5;&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x62FF;&#x5230;&#x6570;&#x636E;&#x4E86;&#x3002;</li>
+<li>&#x5C06;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7EC4;&#x5408;&#x5199;&#x5728;value&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x5F02;&#x6B65;&#x7684;&#x65B9;&#x5F0F;&#x4E0D;&#x65AD;&#x7684;&#x5237;&#x65B0;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x9632;&#x6B62;&#x6B64;&#x7C7B;&#x73B0;&#x8C61;&#x3002;</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkKzFXwdvpY1HiaeiacNQdsPanPTDZF73DqwwnKaWr7a5R1IeXxlthEsxQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h3 id="&#x7F13;&#x5B58;&#x7A7F;&#x900F;">&#x7F13;&#x5B58;&#x7A7F;&#x900F;</h3>
+<p>&#x7F13;&#x5B58;&#x7A7F;&#x900F;&#x662F;&#x6307;&#x67E5;&#x8BE2;&#x4E0D;&#x5B58;&#x5728;&#x7F13;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6BCF;&#x6B21;&#x8BF7;&#x6C42;&#x90FD;&#x4F1A;&#x6253;&#x5230;DB&#xFF0C;&#x5C31;&#x50CF;&#x7F13;&#x5B58;&#x4E0D;&#x5B58;&#x5728;&#x4E00;&#x6837;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkxbQefhxQibFG1Wmk7jcYJNzia6R8XsQ5QETibvzGyrYibeWYHl9tnFO0Wg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x9488;&#x5BF9;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x52A0;&#x4E00;&#x5C42;&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;&#x3002;&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;&#x7684;&#x539F;&#x7406;&#x662F;&#x5728;&#x4F60;&#x5B58;&#x5165;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x901A;&#x8FC7;&#x6563;&#x5217;&#x51FD;&#x6570;&#x5C06;&#x5B83;&#x6620;&#x5C04;&#x4E3A;&#x4E00;&#x4E2A;&#x4F4D;&#x6570;&#x7EC4;&#x4E2D;&#x7684;K&#x4E2A;&#x70B9;&#xFF0C;&#x540C;&#x65F6;&#x628A;&#x4ED6;&#x4EEC;&#x7F6E;&#x4E3A;1&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#x5F53;&#x7528;&#x6237;&#x518D;&#x6B21;&#x6765;&#x67E5;&#x8BE2;A&#xFF0C;&#x800C;A&#x5728;&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;&#x503C;&#x4E3A;0&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x51FB;&#x7A7F;&#x8BF7;&#x6C42;&#x6253;&#x5230;DB&#x4E86;&#x3002;</p>
+<p>&#x663E;&#x7136;&#xFF0C;&#x4F7F;&#x7528;&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;&#x4E4B;&#x540E;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x662F;&#x8BEF;&#x5224;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x672C;&#x8EAB;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x591A;&#x4E2A;&#x503C;&#x843D;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#xFF0C;&#x90A3;&#x4E48;&#x7406;&#x8BBA;&#x4E0A;&#x6765;&#x8BF4;&#x53EA;&#x8981;&#x6211;&#x4EEC;&#x7684;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x591F;&#x957F;&#xFF0C;&#x8BEF;&#x5224;&#x7684;&#x6982;&#x7387;&#x5C31;&#x4F1A;&#x8D8A;&#x4F4E;&#xFF0C;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#x5C31;&#x6839;&#x636E;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x6765;&#x5C31;&#x597D;&#x4E86;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkpxLCYZLDQHHy52F7AlQTZGuFahFqMLtTqEjjgYo24e52oGuxLVk0BQ/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<h3 id="&#x7F13;&#x5B58;&#x96EA;&#x5D29;">&#x7F13;&#x5B58;&#x96EA;&#x5D29;</h3>
+<p>&#x5F53;&#x67D0;&#x4E00;&#x65F6;&#x523B;&#x53D1;&#x751F;&#x5927;&#x89C4;&#x6A21;&#x7684;&#x7F13;&#x5B58;&#x5931;&#x6548;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x6BD4;&#x5982;&#x4F60;&#x7684;&#x7F13;&#x5B58;&#x670D;&#x52A1;&#x5B95;&#x673A;&#x4E86;&#xFF0C;&#x4F1A;&#x6709;&#x5927;&#x91CF;&#x7684;&#x8BF7;&#x6C42;&#x8FDB;&#x6765;&#x76F4;&#x63A5;&#x6253;&#x5230;DB&#x4E0A;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x6574;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x5D29;&#x6E83;&#xFF0C;&#x79F0;&#x4E3A;&#x96EA;&#x5D29;&#x3002;&#x96EA;&#x5D29;&#x548C;&#x51FB;&#x7A7F;&#x3001;&#x70ED;key&#x7684;&#x95EE;&#x9898;&#x4E0D;&#x592A;&#x4E00;&#x6837;&#x7684;&#x662F;&#xFF0C;&#x4ED6;&#x662F;&#x6307;&#x5927;&#x89C4;&#x6A21;&#x7684;&#x7F13;&#x5B58;&#x90FD;&#x8FC7;&#x671F;&#x5931;&#x6548;&#x4E86;&#x3002;</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkTib3vhuAVcwaDHfQQj1PA1O4Bvy8xZVkEaxaS2hvxqN6LPzWoKq9hCg/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p>&#x9488;&#x5BF9;&#x96EA;&#x5D29;&#x51E0;&#x4E2A;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</p>
+<ol>
+<li>&#x9488;&#x5BF9;&#x4E0D;&#x540C;key&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x907F;&#x514D;&#x540C;&#x65F6;&#x8FC7;&#x671F;</li>
+<li>&#x9650;&#x6D41;&#xFF0C;&#x5982;&#x679C;redis&#x5B95;&#x673A;&#xFF0C;&#x53EF;&#x4EE5;&#x9650;&#x6D41;&#xFF0C;&#x907F;&#x514D;&#x540C;&#x65F6;&#x523B;&#x5927;&#x91CF;&#x8BF7;&#x6C42;&#x6253;&#x5D29;DB</li>
+<li>&#x4E8C;&#x7EA7;&#x7F13;&#x5B58;&#xFF0C;&#x540C;&#x70ED;key&#x7684;&#x65B9;&#x6848;&#x3002;</li>
+</ol>
+<h2 id="&#x7A33;&#x5B9A;&#x6027;">&#x7A33;&#x5B9A;&#x6027;</h2>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ibBMVuDfkZUkwmXhPxzDG71Qc6UYXF5kkwUOehXezU8lZVvC8b9bicpSrymMbJ3niccYoknhboeMoA6AmxkxVRDdA/640?wx_fmt=jpeg&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="img"></p>
+<p><strong>&#x7194;&#x65AD;</strong></p>
+<p>&#x6BD4;&#x5982;&#x8425;&#x9500;&#x670D;&#x52A1;&#x6302;&#x4E86;&#x6216;&#x8005;&#x63A5;&#x53E3;&#x5927;&#x91CF;&#x8D85;&#x65F6;&#x7684;&#x5F02;&#x5E38;&#x60C5;&#x51B5;&#xFF0C;&#x4E0D;&#x80FD;&#x5F71;&#x54CD;&#x4E0B;&#x5355;&#x7684;&#x4E3B;&#x94FE;&#x8DEF;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x79EF;&#x5206;&#x7684;&#x6263;&#x51CF;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x5728;&#x4E8B;&#x540E;&#x505A;&#x8865;&#x6551;&#x3002;</p>
+<p><strong>&#x9650;&#x6D41;</strong></p>
+<p>&#x5BF9;&#x7A81;&#x53D1;&#x5982;&#x5927;&#x4FC3;&#x79D2;&#x6740;&#x7C7B;&#x7684;&#x9AD8;&#x5E76;&#x53D1;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E9B;&#x63A5;&#x53E3;&#x4E0D;&#x505A;&#x9650;&#x6D41;&#x5904;&#x7406;&#xFF0C;&#x53EF;&#x80FD;&#x76F4;&#x63A5;&#x5C31;&#x628A;&#x670D;&#x52A1;&#x6253;&#x6302;&#x4E86;&#xFF0C;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x538B;&#x6D4B;&#x6027;&#x80FD;&#x7684;&#x8BC4;&#x4F30;&#x505A;&#x51FA;&#x5408;&#x9002;&#x7684;&#x9650;&#x6D41;&#x5C24;&#x4E3A;&#x91CD;&#x8981;&#x3002;</p>
+<p><strong>&#x964D;&#x7EA7;</strong></p>
+<p>&#x7194;&#x65AD;&#x4E4B;&#x540E;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x8BF4;&#x5C31;&#x662F;&#x964D;&#x7EA7;&#x7684;&#x4E00;&#x79CD;&#xFF0C;&#x4EE5;&#x7194;&#x65AD;&#x7684;&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#x8425;&#x9500;&#x63A5;&#x53E3;&#x7194;&#x65AD;&#x4E4B;&#x540E;&#x964D;&#x7EA7;&#x65B9;&#x6848;&#x5C31;&#x662F;&#x77ED;&#x65F6;&#x95F4;&#x5185;&#x4E0D;&#x518D;&#x8C03;&#x7528;&#x8425;&#x9500;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x7B49;&#x5230;&#x8425;&#x9500;&#x6062;&#x590D;&#x4E4B;&#x540E;&#x518D;&#x8C03;&#x7528;&#x3002;</p>
+<p><strong>&#x9884;&#x6848;</strong></p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x5C31;&#x7B97;&#x662F;&#x6709;&#x7EDF;&#x4E00;&#x914D;&#x7F6E;&#x4E2D;&#x5FC3;&#xFF0C;&#x5728;&#x4E1A;&#x52A1;&#x7684;&#x9AD8;&#x5CF0;&#x671F;&#x4E5F;&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x505A;&#x51FA;&#x4EFB;&#x4F55;&#x7684;&#x53D8;&#x66F4;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x5408;&#x7406;&#x7684;&#x9884;&#x6848;&#x53EF;&#x4EE5;&#x5728;&#x7D27;&#x6025;&#x7684;&#x65F6;&#x5019;&#x505A;&#x4E00;&#x4E9B;&#x4FEE;&#x6539;&#x3002;</p>
+<p><strong>&#x6838;&#x5BF9;</strong></p>
+<p>&#x9488;&#x5BF9;&#x5404;&#x79CD;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4EA7;&#x751F;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x4E00;&#x81F4;&#x6027;&#x6216;&#x8005;&#x53D7;&#x5230;&#x653B;&#x51FB;&#x5BFC;&#x81F4;&#x7684;&#x6570;&#x636E;&#x5F02;&#x5E38;&#xFF0C;&#x975E;&#x5E38;&#x9700;&#x8981;&#x6838;&#x5BF9;&#x5E73;&#x53F0;&#x6765;&#x505A;&#x6700;&#x540E;&#x7684;&#x515C;&#x5E95;&#x7684;&#x6570;&#x636E;&#x9A8C;&#x8BC1;&#x3002;&#x6BD4;&#x5982;&#x4E0B;&#x6E38;&#x652F;&#x4ED8;&#x7CFB;&#x7EDF;&#x548C;&#x8BA2;&#x5355;&#x7CFB;&#x7EDF;&#x7684;&#x91D1;&#x989D;&#x505A;&#x6838;&#x5BF9;&#x662F;&#x5426;&#x6B63;&#x786E;&#xFF0C;&#x5982;&#x679C;&#x6536;&#x5230;&#x4E2D;&#x95F4;&#x4EBA;&#x653B;&#x51FB;&#x843D;&#x5E93;&#x7684;&#x6570;&#x636E;&#x662F;&#x5426;&#x4FDD;&#x8BC1;&#x6B63;&#x786E;&#x6027;&#x3002;</p>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<p>&#x5176;&#x5B9E;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x600E;&#x4E48;&#x8BBE;&#x8BA1;&#x9AD8;&#x5E76;&#x53D1;&#x7CFB;&#x7EDF;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x672C;&#x8EAB;&#x4ED6;&#x662F;&#x4E0D;&#x96BE;&#x7684;&#xFF0C;&#x65E0;&#x975E;&#x662F;&#x57FA;&#x4E8E;&#x4F60;&#x77E5;&#x9053;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#xFF0C;&#x4ECE;&#x7269;&#x7406;&#x786C;&#x4EF6;&#x5C42;&#x9762;&#x5230;&#x8F6F;&#x4EF6;&#x7684;&#x67B6;&#x6784;&#x3001;&#x4EE3;&#x7801;&#x5C42;&#x9762;&#x7684;&#x4F18;&#x5316;&#xFF0C;&#x4F7F;&#x7528;&#x4EC0;&#x4E48;&#x4E2D;&#x95F4;&#x4EF6;&#x6765;&#x4E0D;&#x65AD;&#x63D0;&#x9AD8;&#x7CFB;&#x7EDF;&#x7684;&#x6297;&#x538B;&#x80FD;&#x529B;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x672C;&#x8EAB;&#x4F1A;&#x5E26;&#x6765;&#x66F4;&#x591A;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5FAE;&#x670D;&#x52A1;&#x672C;&#x8EAB;&#x7684;&#x62C6;&#x5206;&#x5E26;&#x6765;&#x4E86;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x7684;&#x95EE;&#x9898;&#xFF0C;http&#x3001;RPC&#x6846;&#x67B6;&#x7684;&#x4F7F;&#x7528;&#x5E26;&#x6765;&#x4E86;&#x901A;&#x4FE1;&#x6548;&#x7387;&#x3001;&#x8DEF;&#x7531;&#x3001;&#x5BB9;&#x9519;&#x7684;&#x95EE;&#x9898;&#xFF0C;MQ&#x7684;&#x5F15;&#x5165;&#x5E26;&#x6765;&#x4E86;&#x6D88;&#x606F;&#x4E22;&#x5931;&#x3001;&#x79EF;&#x538B;&#x3001;&#x4E8B;&#x52A1;&#x6D88;&#x606F;&#x3001;&#x987A;&#x5E8F;&#x6D88;&#x606F;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x7F13;&#x5B58;&#x7684;&#x5F15;&#x5165;&#x53C8;&#x4F1A;&#x5E26;&#x6765;&#x4E00;&#x81F4;&#x6027;&#x3001;&#x96EA;&#x5D29;&#x3001;&#x51FB;&#x7A7F;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x7684;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x3001;&#x5206;&#x5E93;&#x5206;&#x8868;&#x53C8;&#x4F1A;&#x5E26;&#x6765;&#x4E3B;&#x4ECE;&#x540C;&#x6B65;&#x5EF6;&#x8FDF;&#x3001;&#x5206;&#x5E03;&#x5F0F;ID&#x3001;&#x4E8B;&#x52A1;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x800C;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x6211;&#x4EEC;&#x53C8;&#x8981;&#x4E0D;&#x65AD;&#x7684;&#x52A0;&#x5165;&#x5404;&#x79CD;&#x63AA;&#x65BD;&#x7194;&#x65AD;&#x3001;&#x9650;&#x6D41;&#x3001;&#x964D;&#x7EA7;&#x3001;&#x79BB;&#x7EBF;&#x6838;&#x5BF9;&#x3001;&#x9884;&#x6848;&#x5904;&#x7406;&#x7B49;&#x7B49;&#x6765;&#x9632;&#x6B62;&#x548C;&#x8FFD;&#x6EAF;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x3002;<hr><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el: "#vcomments",appId: 'TFSll9o8N2VjWuA0q0CXIBtk-gzGzoHsz',appKey: 'dnU9vjDuKzlEqzVJeIMbqVFX',placeholder: 'Just go go',avatar: '',meta: undefined,pageSize: 10,lang: 'zh-CN',recordIP: false})</script> </p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; dzh 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2020-12-24 18:38:48
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="分布式的一些原理.html" class="navigation navigation-prev " aria-label="Previous page: 分布式的一些原理.md">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../手写一个AQS.html" class="navigation navigation-next " aria-label="Next page: 手写一个AQS.md">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"微信公众号文章高并发系统设计.md","level":"1.4.9.3","depth":3,"next":{"title":"手写一个AQS.md","level":"1.4.10","depth":2,"path":"../notes/20.11/手写一个AQS.md","ref":"../notes/20.11/手写一个AQS.md","articles":[]},"previous":{"title":"分布式的一些原理.md","level":"1.4.9.2","depth":3,"path":"../notes/20.11/分布式/分布式的一些原理.md","ref":"../notes/20.11/分布式/分布式的一些原理.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["valine","-lunr","-search","search-pro","back-to-top-button","chapter-fold","code","splitter","tbfed-pagefooter","page-treeview","hide-element","pageview-count","popup","-sharing","sharing-plus","github","page-toc-button"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy dzh 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"","minHeaderCount":"2","minHeaderDeep":"2"},"chapter-fold":{},"github":{"url":"https://github.com/dongzhonghua/dongzhonghua.github.io"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"qq":false,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":false,"facebook":false,"weibo":true,"twitter":false,"pocket":false,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"valine":{"avatar":"","lang":"zh-CN","pageSize":10,"placeholder":"Just go go","recordIP":false,"appId":"TFSll9o8N2VjWuA0q0CXIBtk-gzGzoHsz","appKey":"dnU9vjDuKzlEqzVJeIMbqVFX"}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"../notes/20.11/分布式/微信公众号文章高并发系统设计.md","mtime":"2020-12-24T10:38:48.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-23T14:48:09.211Z"},"basePath":"../../../mygitbook","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../mygitbook/gitbook/gitbook.js"></script>
+    <script src="../../../mygitbook/gitbook/theme.js"></script>
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../mygitbook/gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
