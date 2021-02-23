@@ -8,7 +8,7 @@ notes.sort()
 
 f = open("mygitbook/SUMMARY.md", "w")
 f.write("# Summary\n")
-f.write("* [Introduction](README.md)\n")
+f.write("* [前言](../README.md)\n")
 
 
 def create_readme(file):
@@ -40,8 +40,8 @@ def get_filelist(dir, level):
 if __name__ == '__main__':
     listdir = os.listdir(folder)
     listdir.sort()
+    print(">>>>>>>开始生成SUMMARY.md")
     for d in listdir:
         if d.startswith("."):
             continue
         get_filelist(folder + "/" + d, 0)
-    print(">>>>>>>开始生成SUMMARY.md")
