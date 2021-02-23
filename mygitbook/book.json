@@ -8,7 +8,6 @@
     "chapter-fold",
     "code",
     "splitter",
-    "tbfed-pagefooter",
     "page-treeview",
     "hide-element",
     "pageview-count",
@@ -26,9 +25,6 @@
     "page-toc-button": {
       "maxTocDepth": 2,
       "minTocSize": 2
-    },
-    "tbfed-pagefooter": {
-      "copyright": "Copyright &copy dzh 2021"
     },
     "page-treeview": {
       "copyright": "",
