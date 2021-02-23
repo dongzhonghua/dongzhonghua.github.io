@@ -15,18 +15,12 @@
     "-sharing",
     "sharing-plus",
     "github",
-    "page-toc-button",
-    "disqus"
+    "page-toc-button"
   ],
   "pluginsConfig": {
-    "disqus": {
-      "shortName": "XXXXXXX"
-    },
-    "pluginsConfig": {
-      "page-toc-button": {
-        "maxTocDepth": 2,
-        "minTocSize": 2
-      }
+    "page-toc-button": {
+      "maxTocDepth": 2,
+      "minTocSize": 2
     },
     "tbfed-pagefooter": {
       "copyright": "Copyright &copy dzh 2021",
