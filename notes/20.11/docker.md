@@ -276,12 +276,6 @@ docker logs $ContainerName
 docker logs -f $ContainerName
 ```
 
-### 查看容器的IP地址
-
-```
-docker inspect --format '{{ .NetworkSettings.IPAddress }}' $ContainerName
-```
-
 ### 修改容器的启动方式
 
 ```
