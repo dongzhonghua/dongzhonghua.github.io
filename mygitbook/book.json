@@ -1,5 +1,6 @@
 {
   "plugins": [
+    "valine",
     "-lunr",
     "-search",
     "search-pro",
@@ -18,6 +19,10 @@
     "page-toc-button"
   ],
   "pluginsConfig": {
+    "valine": {
+      "appId": "TFSll9o8N2VjWuA0q0CXIBtk-gzGzoHsz",
+      "appKey": "dnU9vjDuKzlEqzVJeIMbqVFX"
+    },
     "page-toc-button": {
       "maxTocDepth": 2,
       "minTocSize": 2
