@@ -1,5 +1,4 @@
 # Summary
-* [Introduction](README.md)
 * [20.10](../notes/20.10/README.md)
 	* [java热部署原理及实践](../notes/20.10/java热部署原理及实践/README.md)
 		* [Java实现热部署（一）：类加载机制以及简单热部署的实现.md](../notes/20.10/java热部署原理及实践/Java实现热部署（一）：类加载机制以及简单热部署的实现.md)
