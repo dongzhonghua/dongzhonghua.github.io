@@ -1,0 +1,74 @@
+{
+  "plugins": [
+    "-lunr",
+    "-search",
+    "search-pro",
+    "back-to-top-button",
+    "chapter-fold",
+    "code",
+    "splitter",
+    "tbfed-pagefooter",
+    "page-treeview",
+    "hide-element",
+    "pageview-count",
+    "popup",
+    "-sharing",
+    "sharing-plus",
+    "github",
+    "page-toc-button",
+    "disqus"
+  ],
+  "pluginsConfig": {
+    "disqus": {
+      "shortName": "XXXXXXX"
+    },
+    "pluginsConfig": {
+      "page-toc-button": {
+        "maxTocDepth": 2,
+        "minTocSize": 2
+      }
+    },
+    "tbfed-pagefooter": {
+      "copyright": "Copyright &copy dzh 2021",
+      "modify_label": "该文件修订时间：",
+      "modify_format": "YYYY-MM-DD HH:mm:ss"
+    },
+    "page-treeview": {
+      "copyright": "",
+      "minHeaderCount": "2",
+      "minHeaderDeep": "2"
+    },
+    "hide-element": {
+      "elements": [
+        ".gitbook-link"
+      ]
+    },
+    "sharing": {
+      "douban": false,
+      "facebook": false,
+      "google": true,
+      "pocket": false,
+      "qq": false,
+      "qzone": true,
+      "twitter": false,
+      "weibo": true,
+      "all": [
+        "douban",
+        "facebook",
+        "google",
+        "instapaper",
+        "linkedin",
+        "twitter",
+        "weibo",
+        "messenger",
+        "qq",
+        "qzone",
+        "viber",
+        "whatsapp"
+      ]
+    },
+    "github": {
+      "url": "https://github.com/dongzhonghua/dongzhonghua.github.io"
+    }
+  }
+}
