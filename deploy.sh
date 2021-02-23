@@ -6,6 +6,7 @@ python3 build/build.py
 
 cd mygitbook || exit
 gitbook build . book
+cd ..
 git add .
 git commit -m "$cmt"
 git push origin main
