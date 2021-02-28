@@ -1,1 +1,7 @@
-notes/20.12
+* [Java代理.md](Java代理.md)
+* [Redis](Redis/README.md)
+* [csdn上分享的java一次oom的解决方案.md](csdn上分享的java一次oom的解决方案.md)
+* [vimdiff.md](vimdiff.md)
+* [使用maven做Junit5单元测试.md](使用maven做Junit5单元测试.md)
+* [登录ssh不需要密码的方式.md](登录ssh不需要密码的方式.md)
+* [禁止Chrome通过两指轻划来切换页面.md](禁止Chrome通过两指轻划来切换页面.md)

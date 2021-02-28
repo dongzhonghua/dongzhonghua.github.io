@@ -12,11 +12,27 @@ f = open("SUMMARY.md", "w")
 f.write("# Summary\n")
 f.write("* [前言](README.md)\n")
 
+readme_template = '{0}* [{1}]({2})\n'
 
-def create_readme(file):
-    readme = file + "/README.md"
-    with open(readme, "w") as rm:
-        rm.write(os.path.basename(file))
+
+def write_readme(q, file, level):
+    new_dir = file
+    _listdir = os.listdir(file)
+    _listdir.sort()
+    _listdir.remove("README.md")
+    for s in _listdir:
+        if s.startswith("."):
+            continue
+        filename = os.path.basename(s)
+        new_dir = os.path.join(file, s)
+        if os.path.isfile(new_dir):
+            text = template.format("\t" * level, filename, filename)
+            q.write(text)
+            print(q.name + file + ">>>>>>>1" + text)
+        elif os.path.isdir(new_dir):
+            text = template.format("\t" * level, filename, filename + '/README.md')
+            q.write(text)
+            write_readme(open(new_dir + "/README.md", 'w'), new_dir, level + 1)
 
 
 def get_filelist(file, level):
@@ -27,22 +43,19 @@ def get_filelist(file, level):
             f.write(text)
     elif os.path.isdir(file):
         text = template.format("\t" * level, os.path.basename(file), file + "/README.md")
+        write_readme(open(file + "/README.md", 'w'), file, 0)
         f.write(text)
         _listdir = os.listdir(file)
         _listdir.sort()
         for s in _listdir:
             if s.startswith("."):
                 continue
-            if "README.md" not in os.listdir(file):
-                create_readme(file)
             new_dir = os.path.join(file, s)
             get_filelist(new_dir, level + 1)
 
 
 if __name__ == '__main__':
-
     upload = 0
-
     try:
         options, args = getopt.getopt(sys.argv[1:], "-u:", ["upload"])
     except getopt.GetoptError:

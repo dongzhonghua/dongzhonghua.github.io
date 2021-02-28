@@ -1,1 +1,5 @@
-notes/20.10/maven
+* [一maven打包工具.md](一maven打包工具.md)
+* [三manifest和maven.md](三manifest和maven.md)
+* [二通过maven来启动main方法.md](二通过maven来启动main方法.md)
+* [五maven构建的生命周期和常用命令.md](五maven构建的生命周期和常用命令.md)
+* [四dependencyManagement和dependencies.md](四dependencyManagement和dependencies.md)

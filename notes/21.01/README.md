@@ -1,1 +1,6 @@
-notes/21.01
+* [Java中为什么基本类型要有包装类型.md](Java中为什么基本类型要有包装类型.md)
+* [Nagle算法.md](Nagle算法.md)
+* [maven打包特别慢的解决方案.md](maven打包特别慢的解决方案.md)
+* [函数式接口.md](函数式接口.md)
+* [委派模式(Delegate).md](委派模式(Delegate).md)
+* [定时器.md](定时器.md)

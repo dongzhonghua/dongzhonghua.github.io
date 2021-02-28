@@ -1,1 +1,6 @@
-notes/20.10/java热部署原理及实践
+* [Java实现热部署（一）：类加载机制以及简单热部署的实现.md](Java实现热部署（一）：类加载机制以及简单热部署的实现.md)
+* [Java实现热部署（二）：java类加载过程代码分析.md](Java实现热部署（二）：java类加载过程代码分析.md)
+* [Java实现热部署（四）：热部署插件分析.md](Java实现热部署（四）：热部署插件分析.md)
+* [agent源码.md](agent源码.md)
+* [attach源码.md](attach源码.md)
+* [java实现热部署（三）：agent instrumentation attach等手段实现方法体级别的热替换.md](java实现热部署（三）：agent instrumentation attach等手段实现方法体级别的热替换.md)
