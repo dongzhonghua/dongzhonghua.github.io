@@ -15,9 +15,13 @@
     "-sharing",
     "sharing-plus",
     "github",
-    "page-toc-button"
+    "page-toc-button",
+    "anchors"
   ],
   "pluginsConfig": {
+    "theme-default": {
+      "showLevel": true
+    },
     "valine": {
       "appId": "TFSll9o8N2VjWuA0q0CXIBtk-gzGzoHsz",
       "appKey": "dnU9vjDuKzlEqzVJeIMbqVFX"

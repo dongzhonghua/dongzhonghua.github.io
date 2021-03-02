@@ -4,6 +4,8 @@
 
 我觉得这个是一个写的非常好的组件，一个是他相对独立，把源码直接拿出来也可以运行，没有依赖其他的东西，易于理解，看完之后甚至可以自己写一个。二是这个工具有浓浓的JDK的味道。不知道怎么地，看这个我就发现，后续的很多JDK源码其实和这个是很像的，有渊源的，有时间多看看像这种的小源码是非常快乐的事情。
 
+![](https://gitee.com/dongzhonghua/zhonghua/raw/master/img/blog/timer%E7%B1%BB%E5%9B%BE.png)
+
 ## Timer
 
 timer两个重要的属性，queue是一个优先队列，他与TimerThread共享该队列。

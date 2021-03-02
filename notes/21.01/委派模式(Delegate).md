@@ -12,7 +12,7 @@
 
 ## 类图
 
-https://images2018.cnblogs.com/blog/794700/201809/794700-20180907125504961-271414599.png
+![委派模型](https://gitee.com/dongzhonghua/zhonghua/raw/master/img/blog/委派模式.png)
 
 ## 实现
 
