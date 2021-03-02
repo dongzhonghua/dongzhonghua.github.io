@@ -1,0 +1,2165 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Redis分布式锁RedLock.md · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Redis深度历险读书笔记.html" />
+    
+    
+    <link rel="prev" href="Redis分布式锁.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../20.10/">
+            
+                <a href="../../20.10/">
+            
+                    
+                        <b>1.2.</b>
+                    
+                    20.10
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../20.10/java热部署原理及实践/">
+            
+                <a href="../../20.10/java热部署原理及实践/">
+            
+                    
+                        <b>1.2.1.</b>
+                    
+                    java热部署原理及实践
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../20.10/java热部署原理及实践/Java实现热部署（一）：类加载机制以及简单热部署的实现.html">
+            
+                <a href="../../20.10/java热部署原理及实践/Java实现热部署（一）：类加载机制以及简单热部署的实现.html">
+            
+                    
+                        <b>1.2.1.1.</b>
+                    
+                    Java实现热部署（一）：类加载机制以及简单热部署的实现.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../../20.10/java热部署原理及实践/Java实现热部署（二）：java类加载过程代码分析.html">
+            
+                <a href="../../20.10/java热部署原理及实践/Java实现热部署（二）：java类加载过程代码分析.html">
+            
+                    
+                        <b>1.2.1.2.</b>
+                    
+                    Java实现热部署（二）：java类加载过程代码分析.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../../20.10/java热部署原理及实践/Java实现热部署（四）：热部署插件分析.html">
+            
+                <a href="../../20.10/java热部署原理及实践/Java实现热部署（四）：热部署插件分析.html">
+            
+                    
+                        <b>1.2.1.3.</b>
+                    
+                    Java实现热部署（四）：热部署插件分析.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.4" data-path="../../20.10/java热部署原理及实践/agent源码.html">
+            
+                <a href="../../20.10/java热部署原理及实践/agent源码.html">
+            
+                    
+                        <b>1.2.1.4.</b>
+                    
+                    agent源码.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.5" data-path="../../20.10/java热部署原理及实践/attach源码.html">
+            
+                <a href="../../20.10/java热部署原理及实践/attach源码.html">
+            
+                    
+                        <b>1.2.1.5.</b>
+                    
+                    attach源码.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.6" data-path="../../20.10/java热部署原理及实践/java实现热部署（三）：agent instrumentation attach等手段实现方法体级别的热替换.html">
+            
+                <a href="../../20.10/java热部署原理及实践/java实现热部署（三）：agent instrumentation attach等手段实现方法体级别的热替换.html">
+            
+                    
+                        <b>1.2.1.6.</b>
+                    
+                    java实现热部署（三）：agent instrumentation attach等手段实现方法体级别的热替换.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../20.10/jvm/">
+            
+                <a href="../../20.10/jvm/">
+            
+                    
+                        <b>1.2.2.</b>
+                    
+                    jvm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../../20.10/jvm/jvm可视化工具.html">
+            
+                <a href="../../20.10/jvm/jvm可视化工具.html">
+            
+                    
+                        <b>1.2.2.1.</b>
+                    
+                    jvm可视化工具.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../../20.10/jvm/jvm的方法区元空间等.html">
+            
+                <a href="../../20.10/jvm/jvm的方法区元空间等.html">
+            
+                    
+                        <b>1.2.2.2.</b>
+                    
+                    jvm的方法区元空间等.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../20.10/markdown标题数字.html">
+            
+                <a href="../../20.10/markdown标题数字.html">
+            
+                    
+                        <b>1.2.3.</b>
+                    
+                    markdown标题数字.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../20.10/maven/">
+            
+                <a href="../../20.10/maven/">
+            
+                    
+                        <b>1.2.4.</b>
+                    
+                    maven
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../../20.10/maven/一maven打包工具.html">
+            
+                <a href="../../20.10/maven/一maven打包工具.html">
+            
+                    
+                        <b>1.2.4.1.</b>
+                    
+                    一maven打包工具.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../../20.10/maven/三manifest和maven.html">
+            
+                <a href="../../20.10/maven/三manifest和maven.html">
+            
+                    
+                        <b>1.2.4.2.</b>
+                    
+                    三manifest和maven.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.3" data-path="../../20.10/maven/二通过maven来启动main方法.html">
+            
+                <a href="../../20.10/maven/二通过maven来启动main方法.html">
+            
+                    
+                        <b>1.2.4.3.</b>
+                    
+                    二通过maven来启动main方法.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.4" data-path="../../20.10/maven/五maven构建的生命周期和常用命令.html">
+            
+                <a href="../../20.10/maven/五maven构建的生命周期和常用命令.html">
+            
+                    
+                        <b>1.2.4.4.</b>
+                    
+                    五maven构建的生命周期和常用命令.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.5" data-path="../../20.10/maven/四dependencyManagement和dependencies.html">
+            
+                <a href="../../20.10/maven/四dependencyManagement和dependencies.html">
+            
+                    
+                        <b>1.2.4.5.</b>
+                    
+                    四dependencyManagement和dependencies.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../20.10/vscode插件/">
+            
+                <a href="../../20.10/vscode插件/">
+            
+                    
+                        <b>1.2.5.</b>
+                    
+                    vscode插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.5.1" data-path="../../20.10/vscode插件/vscode插件.html">
+            
+                <a href="../../20.10/vscode插件/vscode插件.html">
+            
+                    
+                        <b>1.2.5.1.</b>
+                    
+                    vscode插件.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../20.10之前归档/">
+            
+                <a href="../../20.10之前归档/">
+            
+                    
+                        <b>1.3.</b>
+                    
+                    20.10之前归档
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../20.10之前归档/HashMap.html">
+            
+                <a href="../../20.10之前归档/HashMap.html">
+            
+                    
+                        <b>1.3.1.</b>
+                    
+                    HashMap.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../20.10之前归档/JVM.html">
+            
+                <a href="../../20.10之前归档/JVM.html">
+            
+                    
+                        <b>1.3.2.</b>
+                    
+                    JVM.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../20.10之前归档/Java服务异常分析的几个思路.html">
+            
+                <a href="../../20.10之前归档/Java服务异常分析的几个思路.html">
+            
+                    
+                        <b>1.3.3.</b>
+                    
+                    Java服务异常分析的几个思路.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../../20.10之前归档/Redis设计与实现.html">
+            
+                <a href="../../20.10之前归档/Redis设计与实现.html">
+            
+                    
+                        <b>1.3.4.</b>
+                    
+                    Redis设计与实现.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../../20.10之前归档/Spring知识点.html">
+            
+                <a href="../../20.10之前归档/Spring知识点.html">
+            
+                    
+                        <b>1.3.5.</b>
+                    
+                    Spring知识点.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../../20.10之前归档/crontab定时任务.html">
+            
+                <a href="../../20.10之前归档/crontab定时任务.html">
+            
+                    
+                        <b>1.3.6.</b>
+                    
+                    crontab定时任务.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../../20.10之前归档/idea远程部署docker.html">
+            
+                <a href="../../20.10之前归档/idea远程部署docker.html">
+            
+                    
+                        <b>1.3.7.</b>
+                    
+                    idea远程部署docker.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../../20.10之前归档/linux系统命令行快捷键.html">
+            
+                <a href="../../20.10之前归档/linux系统命令行快捷键.html">
+            
+                    
+                        <b>1.3.8.</b>
+                    
+                    linux系统命令行快捷键.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="../../20.10之前归档/redis知识点和面试问题.html">
+            
+                <a href="../../20.10之前归档/redis知识点和面试问题.html">
+            
+                    
+                        <b>1.3.9.</b>
+                    
+                    redis知识点和面试问题.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="../../20.10之前归档/redis线程模型.html">
+            
+                <a href="../../20.10之前归档/redis线程模型.html">
+            
+                    
+                        <b>1.3.10.</b>
+                    
+                    redis线程模型.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="../../20.10之前归档/tcp建立和释放连接过程三次握手四次挥手.html">
+            
+                <a href="../../20.10之前归档/tcp建立和释放连接过程三次握手四次挥手.html">
+            
+                    
+                        <b>1.3.11.</b>
+                    
+                    tcp建立和释放连接过程三次握手四次挥手.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.12" data-path="../../20.10之前归档/使用typora自动上传图片到github仓库.html">
+            
+                <a href="../../20.10之前归档/使用typora自动上传图片到github仓库.html">
+            
+                    
+                        <b>1.3.12.</b>
+                    
+                    使用typora自动上传图片到github仓库.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="../../20.10之前归档/写Redis时的并发异常和分布式锁.html">
+            
+                <a href="../../20.10之前归档/写Redis时的并发异常和分布式锁.html">
+            
+                    
+                        <b>1.3.13.</b>
+                    
+                    写Redis时的并发异常和分布式锁.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="../../20.10之前归档/分布式系统.html">
+            
+                <a href="../../20.10之前归档/分布式系统.html">
+            
+                    
+                        <b>1.3.14.</b>
+                    
+                    分布式系统.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="../../20.10之前归档/单例模式整理以及相关的知识点.html">
+            
+                <a href="../../20.10之前归档/单例模式整理以及相关的知识点.html">
+            
+                    
+                        <b>1.3.15.</b>
+                    
+                    单例模式整理以及相关的知识点.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="../../20.10之前归档/如何制作一个自己的图床.html">
+            
+                <a href="../../20.10之前归档/如何制作一个自己的图床.html">
+            
+                    
+                        <b>1.3.16.</b>
+                    
+                    如何制作一个自己的图床.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.17" data-path="../../20.10之前归档/常用的消息中间件.html">
+            
+                <a href="../../20.10之前归档/常用的消息中间件.html">
+            
+                    
+                        <b>1.3.17.</b>
+                    
+                    常用的消息中间件.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.18" data-path="../../20.10之前归档/并发编程常见面试题.html">
+            
+                <a href="../../20.10之前归档/并发编程常见面试题.html">
+            
+                    
+                        <b>1.3.18.</b>
+                    
+                    并发编程常见面试题.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.19" data-path="../../20.10之前归档/搜索引擎书.html">
+            
+                <a href="../../20.10之前归档/搜索引擎书.html">
+            
+                    
+                        <b>1.3.19.</b>
+                    
+                    搜索引擎书.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.20" data-path="../../20.10之前归档/操作系统知识点和面试总结.html">
+            
+                <a href="../../20.10之前归档/操作系统知识点和面试总结.html">
+            
+                    
+                        <b>1.3.20.</b>
+                    
+                    操作系统知识点和面试总结.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.21" data-path="../../20.10之前归档/数据库常考点.html">
+            
+                <a href="../../20.10之前归档/数据库常考点.html">
+            
+                    
+                        <b>1.3.21.</b>
+                    
+                    数据库常考点.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.22" data-path="../../20.10之前归档/数据库索引.html">
+            
+                <a href="../../20.10之前归档/数据库索引.html">
+            
+                    
+                        <b>1.3.22.</b>
+                    
+                    数据库索引.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.23" data-path="../../20.10之前归档/新买的服务器要做哪些配置.html">
+            
+                <a href="../../20.10之前归档/新买的服务器要做哪些配置.html">
+            
+                    
+                        <b>1.3.23.</b>
+                    
+                    新买的服务器要做哪些配置.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.24" data-path="../../20.10之前归档/新建springboot项目.html">
+            
+                <a href="../../20.10之前归档/新建springboot项目.html">
+            
+                    
+                        <b>1.3.24.</b>
+                    
+                    新建springboot项目.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.25" data-path="../../20.10之前归档/系统架构设计.html">
+            
+                <a href="../../20.10之前归档/系统架构设计.html">
+            
+                    
+                        <b>1.3.25.</b>
+                    
+                    系统架构设计.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.26" data-path="../../20.10之前归档/经验教训.html">
+            
+                <a href="../../20.10之前归档/经验教训.html">
+            
+                    
+                        <b>1.3.26.</b>
+                    
+                    经验教训.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.27" data-path="../../20.10之前归档/计算机网络常见面试题.html">
+            
+                <a href="../../20.10之前归档/计算机网络常见面试题.html">
+            
+                    
+                        <b>1.3.27.</b>
+                    
+                    计算机网络常见面试题.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.28" data-path="../../20.10之前归档/设计模式常考点.html">
+            
+                <a href="../../20.10之前归档/设计模式常考点.html">
+            
+                    
+                        <b>1.3.28.</b>
+                    
+                    设计模式常考点.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../20.11/">
+            
+                <a href="../../20.11/">
+            
+                    
+                        <b>1.4.</b>
+                    
+                    20.11
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../20.11/HTTPS/">
+            
+                <a href="../../20.11/HTTPS/">
+            
+                    
+                        <b>1.4.1.</b>
+                    
+                    HTTPS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../../20.11/HTTPS/https原理.html">
+            
+                <a href="../../20.11/HTTPS/https原理.html">
+            
+                    
+                        <b>1.4.1.1.</b>
+                    
+                    https原理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../../20.11/HTTPS/如何让自己的网站支持https.html">
+            
+                <a href="../../20.11/HTTPS/如何让自己的网站支持https.html">
+            
+                    
+                        <b>1.4.1.2.</b>
+                    
+                    如何让自己的网站支持https.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../20.11/cheat_sh.html">
+            
+                <a href="../../20.11/cheat_sh.html">
+            
+                    
+                        <b>1.4.2.</b>
+                    
+                    cheat_sh.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../20.11/docker.html">
+            
+                <a href="../../20.11/docker.html">
+            
+                    
+                        <b>1.4.3.</b>
+                    
+                    docker.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../../20.11/java.io.Closeable接口.html">
+            
+                <a href="../../20.11/java.io.Closeable接口.html">
+            
+                    
+                        <b>1.4.4.</b>
+                    
+                    java.io.Closeable接口.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../../20.11/java测试.html">
+            
+                <a href="../../20.11/java测试.html">
+            
+                    
+                        <b>1.4.5.</b>
+                    
+                    java测试.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../../20.11/lambda和stream.html">
+            
+                <a href="../../20.11/lambda和stream.html">
+            
+                    
+                        <b>1.4.6.</b>
+                    
+                    lambda和stream.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../../20.11/nginx.html">
+            
+                <a href="../../20.11/nginx.html">
+            
+                    
+                        <b>1.4.7.</b>
+                    
+                    nginx.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../../20.11/spring启动流程（敖丙公众号）.html">
+            
+                <a href="../../20.11/spring启动流程（敖丙公众号）.html">
+            
+                    
+                        <b>1.4.8.</b>
+                    
+                    spring启动流程（敖丙公众号）.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../../20.11/分布式/">
+            
+                <a href="../../20.11/分布式/">
+            
+                    
+                        <b>1.4.9.</b>
+                    
+                    分布式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.9.1" data-path="../../20.11/分布式/zookeeper/">
+            
+                <a href="../../20.11/分布式/zookeeper/">
+            
+                    
+                        <b>1.4.9.1.</b>
+                    
+                    zookeeper
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.9.1.1" data-path="../../20.11/分布式/zookeeper/Zookeeper.html">
+            
+                <a href="../../20.11/分布式/zookeeper/Zookeeper.html">
+            
+                    
+                        <b>1.4.9.1.1.</b>
+                    
+                    Zookeeper.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9.1.2" data-path="../../20.11/分布式/zookeeper/zookeeper学习一.html">
+            
+                <a href="../../20.11/分布式/zookeeper/zookeeper学习一.html">
+            
+                    
+                        <b>1.4.9.1.2.</b>
+                    
+                    zookeeper学习一.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9.2" data-path="../../20.11/分布式/分布式的一些原理.html">
+            
+                <a href="../../20.11/分布式/分布式的一些原理.html">
+            
+                    
+                        <b>1.4.9.2.</b>
+                    
+                    分布式的一些原理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9.3" data-path="../../20.11/分布式/微信公众号文章高并发系统设计.html">
+            
+                <a href="../../20.11/分布式/微信公众号文章高并发系统设计.html">
+            
+                    
+                        <b>1.4.9.3.</b>
+                    
+                    微信公众号文章高并发系统设计.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../../20.11/手写一个AQS.html">
+            
+                <a href="../../20.11/手写一个AQS.html">
+            
+                    
+                        <b>1.4.10.</b>
+                    
+                    手写一个AQS.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../../20.11/计算机启动过程.html">
+            
+                <a href="../../20.11/计算机启动过程.html">
+            
+                    
+                        <b>1.4.11.</b>
+                    
+                    计算机启动过程.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.5.</b>
+                    
+                    20.12
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Java代理.html">
+            
+                <a href="../Java代理.html">
+            
+                    
+                        <b>1.5.1.</b>
+                    
+                    Java代理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                        <b>1.5.2.</b>
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="Redission.html">
+            
+                <a href="Redission.html">
+            
+                    
+                        <b>1.5.2.1.</b>
+                    
+                    Redission.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="Redis与MC的区别.html">
+            
+                <a href="Redis与MC的区别.html">
+            
+                    
+                        <b>1.5.2.2.</b>
+                    
+                    Redis与MC的区别.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="Redis主从哨兵cluster集群.html">
+            
+                <a href="Redis主从哨兵cluster集群.html">
+            
+                    
+                        <b>1.5.2.3.</b>
+                    
+                    Redis主从哨兵cluster集群.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="Redis分布式锁.html">
+            
+                <a href="Redis分布式锁.html">
+            
+                    
+                        <b>1.5.2.4.</b>
+                    
+                    Redis分布式锁.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.2.5" data-path="Redis分布式锁RedLock.html">
+            
+                <a href="Redis分布式锁RedLock.html">
+            
+                    
+                        <b>1.5.2.5.</b>
+                    
+                    Redis分布式锁RedLock.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.6" data-path="Redis深度历险读书笔记.html">
+            
+                <a href="Redis深度历险读书笔记.html">
+            
+                    
+                        <b>1.5.2.6.</b>
+                    
+                    Redis深度历险读书笔记.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.7" data-path="Redis缓存一致性.html">
+            
+                <a href="Redis缓存一致性.html">
+            
+                    
+                        <b>1.5.2.7.</b>
+                    
+                    Redis缓存一致性.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.8" data-path="Redis订阅发布.html">
+            
+                <a href="Redis订阅发布.html">
+            
+                    
+                        <b>1.5.2.8.</b>
+                    
+                    Redis订阅发布.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.9" data-path="redis实现消息队列和延时队列.html">
+            
+                <a href="redis实现消息队列和延时队列.html">
+            
+                    
+                        <b>1.5.2.9.</b>
+                    
+                    redis实现消息队列和延时队列.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.10" data-path="redis异步复制丢失和脑裂问题.html">
+            
+                <a href="redis异步复制丢失和脑裂问题.html">
+            
+                    
+                        <b>1.5.2.10.</b>
+                    
+                    redis异步复制丢失和脑裂问题.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.11" data-path="大key问题及解决方案.html">
+            
+                <a href="大key问题及解决方案.html">
+            
+                    
+                        <b>1.5.2.11.</b>
+                    
+                    大key问题及解决方案.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../csdn上分享的java一次oom的解决方案.html">
+            
+                <a href="../csdn上分享的java一次oom的解决方案.html">
+            
+                    
+                        <b>1.5.3.</b>
+                    
+                    csdn上分享的java一次oom的解决方案.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../vimdiff.html">
+            
+                <a href="../vimdiff.html">
+            
+                    
+                        <b>1.5.4.</b>
+                    
+                    vimdiff.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../使用maven做Junit5单元测试.html">
+            
+                <a href="../使用maven做Junit5单元测试.html">
+            
+                    
+                        <b>1.5.5.</b>
+                    
+                    使用maven做Junit5单元测试.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../登录ssh不需要密码的方式.html">
+            
+                <a href="../登录ssh不需要密码的方式.html">
+            
+                    
+                        <b>1.5.6.</b>
+                    
+                    登录ssh不需要密码的方式.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../禁止Chrome通过两指轻划来切换页面.html">
+            
+                <a href="../禁止Chrome通过两指轻划来切换页面.html">
+            
+                    
+                        <b>1.5.7.</b>
+                    
+                    禁止Chrome通过两指轻划来切换页面.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../21.01/">
+            
+                <a href="../../21.01/">
+            
+                    
+                        <b>1.6.</b>
+                    
+                    21.01
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../21.01/Java中为什么基本类型要有包装类型.html">
+            
+                <a href="../../21.01/Java中为什么基本类型要有包装类型.html">
+            
+                    
+                        <b>1.6.1.</b>
+                    
+                    Java中为什么基本类型要有包装类型.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../21.01/Nagle算法.html">
+            
+                <a href="../../21.01/Nagle算法.html">
+            
+                    
+                        <b>1.6.2.</b>
+                    
+                    Nagle算法.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../21.01/jdk定时器源码.html">
+            
+                <a href="../../21.01/jdk定时器源码.html">
+            
+                    
+                        <b>1.6.3.</b>
+                    
+                    jdk定时器源码.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../21.01/maven打包特别慢的解决方案.html">
+            
+                <a href="../../21.01/maven打包特别慢的解决方案.html">
+            
+                    
+                        <b>1.6.4.</b>
+                    
+                    maven打包特别慢的解决方案.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../21.01/函数式接口.html">
+            
+                <a href="../../21.01/函数式接口.html">
+            
+                    
+                        <b>1.6.5.</b>
+                    
+                    函数式接口.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../21.01/委派模式(Delegate">
+            
+                <span>
+            
+                    
+                        <b>1.6.6.</b>
+                    
+                    委派模式(Delegate).md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../21.02/">
+            
+                <a href="../../21.02/">
+            
+                    
+                        <b>1.7.</b>
+                    
+                    21.02
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../21.02/拍卖的相关概念.html">
+            
+                <a href="../../21.02/拍卖的相关概念.html">
+            
+                    
+                        <b>1.7.1.</b>
+                    
+                    拍卖的相关概念.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../21.02/限流算法整理.html">
+            
+                <a href="../../21.02/限流算法整理.html">
+            
+                    
+                        <b>1.7.2.</b>
+                    
+                    限流算法整理.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../netty/">
+            
+                <a href="../../netty/">
+            
+                    
+                        <b>1.8.</b>
+                    
+                    netty
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../netty/KStackNetty.html">
+            
+                <a href="../../netty/KStackNetty.html">
+            
+                    
+                        <b>1.8.1.</b>
+                    
+                    KStackNetty.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../netty/netty.html">
+            
+                <a href="../../netty/netty.html">
+            
+                    
+                        <b>1.8.2.</b>
+                    
+                    netty.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../temp/">
+            
+                <a href="../../temp/">
+            
+                    
+                        <b>1.9.</b>
+                    
+                    temp
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../temp/BufferTrigger.html">
+            
+                <a href="../../temp/BufferTrigger.html">
+            
+                    
+                        <b>1.9.1.</b>
+                    
+                    BufferTrigger.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../temp/flink/">
+            
+                <a href="../../temp/flink/">
+            
+                    
+                        <b>1.9.2.</b>
+                    
+                    flink
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../../temp/flink/时间语义.html">
+            
+                <a href="../../temp/flink/时间语义.html">
+            
+                    
+                        <b>1.9.2.1.</b>
+                    
+                    时间语义.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../temp/flink-demo.html">
+            
+                <a href="../../temp/flink-demo.html">
+            
+                    
+                        <b>1.9.3.</b>
+                    
+                    flink-demo.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../../temp/gitbook/">
+            
+                <a href="../../temp/gitbook/">
+            
+                    
+                        <b>1.9.4.</b>
+                    
+                    gitbook
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >Redis分布式锁RedLock.md</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><ul>
+<li><div><a href="#&#x4E00;&#x3001;&#x95EE;&#x9898;">&#x4E00;&#x3001;&#x95EE;&#x9898;</a><i></i></div></li>
+<li><div><a href="#&#x4E8C;&#x3001;&#x529E;&#x6CD5;">&#x4E8C;&#x3001;&#x529E;&#x6CD5;</a><i></i></div></li>
+<li><div><a href="#&#x4E09;&#x3001;&#x539F;&#x7406;">&#x4E09;&#x3001;&#x539F;&#x7406;</a><i></i></div></li>
+<li><div><a href="#&#x56DB;&#x3001;&#x5B9E;&#x6218;">&#x56DB;&#x3001;&#x5B9E;&#x6218;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#x3001;&#x5F15;&#x5165;maven">1&#x3001;&#x5F15;&#x5165;maven</a><i></i></div></li>
+<li><div><a href="#2&#x3001;&#x5F15;&#x5165;&#x4EE3;&#x7801;">2&#x3001;&#x5F15;&#x5165;&#x4EE3;&#x7801;</a><i></i></div></li>
+<li><div><a href="#3&#x3001;&#x6838;&#x5FC3;&#x6E90;&#x7801;">3&#x3001;&#x6838;&#x5FC3;&#x6E90;&#x7801;</a><i></i></div></li>
+</ul></li>
+</ul>
+</div>
+
+<p>[TOC]</p>
+<h2 id="&#x4E00;&#x3001;&#x95EE;&#x9898;"><a name="&#x4E00;&#x3001;&#x95EE;&#x9898;" class="plugin-anchor" href="#&#x4E00;&#x3001;&#x95EE;&#x9898;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E00;&#x3001;&#x95EE;&#x9898;</h2>
+<p>&#x5206;&#x5E03;&#x5F0F;&#x9501;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x8BF7;&#x6C42;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x5F0F;&#x9501;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6210;&#x529F;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x65F6;&#x5019;slave&#x8FD8;&#x6CA1;&#x6709;&#x590D;&#x5236;&#x6211;&#x4EEC;&#x7684;&#x9501;&#xFF0C;masterDown&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x7EE7;&#x7EED;&#x8BF7;&#x6C42;&#x9501;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x4ECE;&#x7EE7;&#x4EFB;&#x4E86;master&#x7684;&#x539F;slave&#x4E0A;&#x7533;&#x8BF7;&#xFF0C;&#x4E5F;&#x4F1A;&#x6210;&#x529F;&#x3002;</p>
+<p>&#x8FD9;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x9501;&#x88AB;&#x83B7;&#x53D6;&#x4E86;&#x4E0D;&#x6B62;&#x4E00;&#x6B21;&#x3002;</p>
+<h2 id="&#x4E8C;&#x3001;&#x529E;&#x6CD5;"><a name="&#x4E8C;&#x3001;&#x529E;&#x6CD5;" class="plugin-anchor" href="#&#x4E8C;&#x3001;&#x529E;&#x6CD5;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E8C;&#x3001;&#x529E;&#x6CD5;</h2>
+<p>Redis&#x4E2D;&#x9488;&#x5BF9;&#x6B64;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5F15;&#x5165;&#x4E86;<a href="https://redis.io/topics/distlock" target="_blank">&#x7EA2;&#x9501;</a>&#x7684;&#x6982;&#x5FF5;&#x3002;</p>
+<h2 id="&#x4E09;&#x3001;&#x539F;&#x7406;"><a name="&#x4E09;&#x3001;&#x539F;&#x7406;" class="plugin-anchor" href="#&#x4E09;&#x3001;&#x539F;&#x7406;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4E09;&#x3001;&#x539F;&#x7406;</h2>
+<p>&#x7528;Redis&#x4E2D;&#x7684;&#x591A;&#x4E2A;master&#x5B9E;&#x4F8B;&#xFF0C;&#x6765;&#x83B7;&#x53D6;&#x9501;&#xFF0C;&#x53EA;&#x6709;<strong>&#x5927;&#x591A;&#x6570;&#x5B9E;&#x4F8B;&#x83B7;&#x53D6;&#x5230;&#x4E86;&#x9501;</strong>&#xFF0C;&#x624D;&#x7B97;&#x662F;&#x83B7;&#x53D6;&#x6210;&#x529F;&#x3002;&#x5177;&#x4F53;&#x7684;&#x7EA2;&#x9501;&#x7B97;&#x6CD5;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x4E94;&#x6B65;&#xFF1A;</p>
+<ol>
+<li>&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7684;&#x65F6;&#x95F4;&#xFF08;&#x5355;&#x4F4D;&#x662F;&#x6BEB;&#x79D2;&#xFF09;&#x3002;</li>
+<li>&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;key&#x548C;&#x968F;&#x673A;&#x503C;&#x5728;N&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x8BF7;&#x6C42;&#x9501;&#x3002;&#x8FD9;&#x91CC;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x5C1D;&#x8BD5;&#x65F6;&#x95F4;&#x8981;&#x8FDC;&#x8FDC;&#x5C0F;&#x4E8E;&#x9501;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#xFF0C;&#x9632;&#x6B62;&#x67D0;&#x4E2A;masterDown&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x5728;&#x4E0D;&#x65AD;&#x7684;&#x83B7;&#x53D6;&#x9501;&#xFF0C;&#x800C;&#x88AB;&#x963B;&#x585E;&#x8FC7;&#x957F;&#x7684;&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x53EA;&#x6709;&#x5728;&#x5927;&#x591A;&#x6570;&#x8282;&#x70B9;&#x4E0A;&#x83B7;&#x53D6;&#x5230;&#x4E86;&#x9501;&#xFF0C;&#x800C;&#x4E14;&#x603B;&#x7684;&#x83B7;&#x53D6;&#x65F6;&#x95F4;&#x5C0F;&#x4E8E;&#x9501;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8BA4;&#x4E3A;&#x9501;&#x83B7;&#x53D6;&#x6210;&#x529F;&#x4E86;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x9501;&#x83B7;&#x53D6;&#x6210;&#x529F;&#x4E86;&#xFF0C;&#x9501;&#x7684;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x5C31;&#x662F;&#x6700;&#x521D;&#x7684;&#x9501;&#x8D85;&#x65F6;&#x65F6;&#x95F4;&#x51CF;&#x53BB;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x603B;&#x8017;&#x65F6;&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x9501;&#x83B7;&#x53D6;&#x5931;&#x8D25;&#x4E86;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;&#x56E0;&#x4E3A;&#x83B7;&#x53D6;&#x6210;&#x529F;&#x7684;&#x8282;&#x70B9;&#x7684;&#x6570;&#x76EE;&#x6CA1;&#x6709;&#x8FC7;&#x534A;&#xFF0C;&#x8FD8;&#x662F;&#x56E0;&#x4E3A;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x8017;&#x65F6;&#x8D85;&#x8FC7;&#x4E86;&#x9501;&#x7684;&#x91CA;&#x653E;&#x65F6;&#x95F4;&#xFF0C;&#x90FD;&#x4F1A;&#x5C06;&#x5DF2;&#x7ECF;&#x8BBE;&#x7F6E;&#x4E86;key&#x7684;master&#x4E0A;&#x7684;key&#x5220;&#x9664;&#x3002;</li>
+</ol>
+<h2 id="&#x56DB;&#x3001;&#x5B9E;&#x6218;"><a name="&#x56DB;&#x3001;&#x5B9E;&#x6218;" class="plugin-anchor" href="#&#x56DB;&#x3001;&#x5B9E;&#x6218;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x56DB;&#x3001;&#x5B9E;&#x6218;</h2>
+<p>Redission&#x5C31;&#x5B9E;&#x73B0;&#x4E86;&#x7EA2;&#x9501;&#x7B97;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<h3 id="1&#x3001;&#x5F15;&#x5165;maven"><a name="1&#x3001;&#x5F15;&#x5165;maven" class="plugin-anchor" href="#1&#x3001;&#x5F15;&#x5165;maven"><i class="fa fa-link" aria-hidden="true"></i></a>1&#x3001;&#x5F15;&#x5165;maven</h3>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.redisson<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>redisson<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.9.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+</code></pre>
+<h3 id="2&#x3001;&#x5F15;&#x5165;&#x4EE3;&#x7801;"><a name="2&#x3001;&#x5F15;&#x5165;&#x4EE3;&#x7801;" class="plugin-anchor" href="#2&#x3001;&#x5F15;&#x5165;&#x4EE3;&#x7801;"><i class="fa fa-link" aria-hidden="true"></i></a>2&#x3001;&#x5F15;&#x5165;&#x4EE3;&#x7801;</h3>
+<pre><code class="lang-java">Config config1 = <span class="hljs-keyword">new</span> Config();
+config1.useSingleServer().setAddress(<span class="hljs-string">&quot;redis://172.0.0.1:5378&quot;</span>).setPassword(<span class="hljs-string">&quot;a123456&quot;</span>).setDatabase(<span class="hljs-number">0</span>);
+RedissonClient redissonClient1 = Redisson.create(config1);
+
+Config config2 = <span class="hljs-keyword">new</span> Config();
+config2.useSingleServer().setAddress(<span class="hljs-string">&quot;redis://172.0.0.1:5379&quot;</span>).setPassword(<span class="hljs-string">&quot;a123456&quot;</span>).setDatabase(<span class="hljs-number">0</span>);
+RedissonClient redissonClient2 = Redisson.create(config2);
+
+Config config3 = <span class="hljs-keyword">new</span> Config();
+config3.useSingleServer().setAddress(<span class="hljs-string">&quot;redis://172.0.0.1:5380&quot;</span>).setPassword(<span class="hljs-string">&quot;a123456&quot;</span>).setDatabase(<span class="hljs-number">0</span>);
+RedissonClient redissonClient3 = Redisson.create(config3);
+
+<span class="hljs-comment">/**
+ * &#x83B7;&#x53D6;&#x591A;&#x4E2A; RLock &#x5BF9;&#x8C61;
+ */</span>
+RLock lock1 = redissonClient1.getLock(lockKey);
+RLock lock2 = redissonClient2.getLock(lockKey);
+RLock lock3 = redissonClient3.getLock(lockKey);
+
+<span class="hljs-comment">/**
+ * &#x6839;&#x636E;&#x591A;&#x4E2A; RLock &#x5BF9;&#x8C61;&#x6784;&#x5EFA; RedissonRedLock &#xFF08;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x5DEE;&#x522B;&#x5C31;&#x5728;&#x8FD9;&#x91CC;&#xFF09;
+ */</span>
+RedissonRedLock redLock = <span class="hljs-keyword">new</span> RedissonRedLock(lock1, lock2, lock3);
+
+<span class="hljs-keyword">try</span> {
+    <span class="hljs-comment">/**
+     * 4.&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x9501;
+     * waitTimeout &#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x6700;&#x5927;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#xFF0C;&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x503C;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x83B7;&#x53D6;&#x9501;&#x5931;&#x8D25;
+     * leaseTime   &#x9501;&#x7684;&#x6301;&#x6709;&#x65F6;&#x95F4;,&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x9501;&#x4F1A;&#x81EA;&#x52A8;&#x5931;&#x6548;&#xFF08;&#x503C;&#x5E94;&#x8BBE;&#x7F6E;&#x4E3A;&#x5927;&#x4E8E;&#x4E1A;&#x52A1;&#x5904;&#x7406;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x786E;&#x4FDD;&#x5728;&#x9501;&#x6709;&#x6548;&#x671F;&#x5185;&#x4E1A;&#x52A1;&#x80FD;&#x5904;&#x7406;&#x5B8C;&#xFF09;
+     */</span>
+    <span class="hljs-keyword">boolean</span> res = redLock.tryLock((<span class="hljs-keyword">long</span>)waitTimeout, (<span class="hljs-keyword">long</span>)leaseTime, TimeUnit.SECONDS);
+    <span class="hljs-keyword">if</span> (res) {
+        <span class="hljs-comment">//&#x6210;&#x529F;&#x83B7;&#x5F97;&#x9501;&#xFF0C;&#x5728;&#x8FD9;&#x91CC;&#x5904;&#x7406;&#x4E1A;&#x52A1;</span>
+    }
+} <span class="hljs-keyword">catch</span> (Exception e) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;aquire lock fail&quot;</span>);
+}<span class="hljs-keyword">finally</span>{
+    <span class="hljs-comment">//&#x65E0;&#x8BBA;&#x5982;&#x4F55;, &#x6700;&#x540E;&#x90FD;&#x8981;&#x89E3;&#x9501;</span>
+    redLock.unlock();
+}
+</code></pre>
+<h3 id="3&#x3001;&#x6838;&#x5FC3;&#x6E90;&#x7801;"><a name="3&#x3001;&#x6838;&#x5FC3;&#x6E90;&#x7801;" class="plugin-anchor" href="#3&#x3001;&#x6838;&#x5FC3;&#x6E90;&#x7801;"><i class="fa fa-link" aria-hidden="true"></i></a>3&#x3001;&#x6838;&#x5FC3;&#x6E90;&#x7801;</h3>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">tryLock</span><span class="hljs-params">(<span class="hljs-keyword">long</span> waitTime, <span class="hljs-keyword">long</span> leaseTime, TimeUnit unit)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>{
+    <span class="hljs-keyword">long</span> newLeaseTime = -<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (leaseTime != -<span class="hljs-number">1</span>) {
+        newLeaseTime = unit.toMillis(waitTime)*<span class="hljs-number">2</span>;
+    }
+
+    <span class="hljs-keyword">long</span> time = System.currentTimeMillis();
+    <span class="hljs-keyword">long</span> remainTime = -<span class="hljs-number">1</span>;
+    <span class="hljs-keyword">if</span> (waitTime != -<span class="hljs-number">1</span>) {
+        remainTime = unit.toMillis(waitTime);
+    }
+    <span class="hljs-keyword">long</span> lockWaitTime = calcLockWaitTime(remainTime);
+    <span class="hljs-comment">/**
+     * 1. &#x5141;&#x8BB8;&#x52A0;&#x9501;&#x5931;&#x8D25;&#x8282;&#x70B9;&#x4E2A;&#x6570;&#x9650;&#x5236;&#xFF08;N-(N/2+1)&#xFF09;
+     */</span>
+    <span class="hljs-keyword">int</span> failedLocksLimit = failedLocksLimit();
+    <span class="hljs-comment">/**
+     * 2. &#x904D;&#x5386;&#x6240;&#x6709;&#x8282;&#x70B9;&#x901A;&#x8FC7;EVAL&#x547D;&#x4EE4;&#x6267;&#x884C;lua&#x52A0;&#x9501;
+     */</span>
+    List&lt;RLock&gt; acquiredLocks = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(locks.size());
+    <span class="hljs-keyword">for</span> (ListIterator&lt;RLock&gt; iterator = locks.listIterator(); iterator.hasNext();) {
+        RLock lock = iterator.next();
+        <span class="hljs-keyword">boolean</span> lockAcquired;
+        <span class="hljs-comment">/**
+         *  3.&#x5BF9;&#x8282;&#x70B9;&#x5C1D;&#x8BD5;&#x52A0;&#x9501;
+         */</span>
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">if</span> (waitTime == -<span class="hljs-number">1</span> &amp;&amp; leaseTime == -<span class="hljs-number">1</span>) {
+                lockAcquired = lock.tryLock();
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">long</span> awaitTime = Math.min(lockWaitTime, remainTime);
+                lockAcquired = lock.tryLock(awaitTime, newLeaseTime, TimeUnit.MILLISECONDS);
+            }
+        } <span class="hljs-keyword">catch</span> (RedisResponseTimeoutException e) {
+            <span class="hljs-comment">// &#x5982;&#x679C;&#x629B;&#x51FA;&#x8FD9;&#x7C7B;&#x5F02;&#x5E38;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x52A0;&#x9501;&#x6210;&#x529F;&#xFF0C;&#x4F46;&#x662F;&#x54CD;&#x5E94;&#x5931;&#x8D25;&#xFF0C;&#x9700;&#x8981;&#x89E3;&#x9501;&#x6240;&#x6709;&#x8282;&#x70B9;</span>
+            unlockInner(Arrays.asList(lock));
+            lockAcquired = <span class="hljs-keyword">false</span>;
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            <span class="hljs-comment">// &#x629B;&#x51FA;&#x5F02;&#x5E38;&#x8868;&#x793A;&#x83B7;&#x53D6;&#x9501;&#x5931;&#x8D25;</span>
+            lockAcquired = <span class="hljs-keyword">false</span>;
+        }
+
+        <span class="hljs-keyword">if</span> (lockAcquired) {
+            <span class="hljs-comment">/**
+             *4. &#x5982;&#x679C;&#x83B7;&#x53D6;&#x5230;&#x9501;&#x5219;&#x6DFB;&#x52A0;&#x5230;&#x5DF2;&#x83B7;&#x53D6;&#x9501;&#x96C6;&#x5408;&#x4E2D;
+             */</span>
+            acquiredLocks.add(lock);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">/**
+             * 5. &#x8BA1;&#x7B97;&#x5DF2;&#x7ECF;&#x7533;&#x8BF7;&#x9501;&#x5931;&#x8D25;&#x7684;&#x8282;&#x70B9;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x5230;&#x8FBE; &#x5141;&#x8BB8;&#x52A0;&#x9501;&#x5931;&#x8D25;&#x8282;&#x70B9;&#x4E2A;&#x6570;&#x9650;&#x5236; &#xFF08;N-(N/2+1)&#xFF09;
+             * &#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x5230;&#x8FBE;&#xFF0C; &#x5C31;&#x8BA4;&#x5B9A;&#x6700;&#x7EC8;&#x7533;&#x8BF7;&#x9501;&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x7EE7;&#x7EED;&#x4ECE;&#x540E;&#x9762;&#x7684;&#x8282;&#x70B9;&#x7533;&#x8BF7;&#x4E86;
+             * &#x56E0;&#x4E3A; Redlock &#x7B97;&#x6CD5;&#x8981;&#x6C42;&#x81F3;&#x5C11;N/2+1 &#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x52A0;&#x9501;&#x6210;&#x529F;&#xFF0C;&#x624D;&#x7B97;&#x6700;&#x7EC8;&#x7684;&#x9501;&#x7533;&#x8BF7;&#x6210;&#x529F;
+             */</span>
+            <span class="hljs-keyword">if</span> (locks.size() - acquiredLocks.size() == failedLocksLimit()) {
+                <span class="hljs-keyword">break</span>;
+            }
+
+            <span class="hljs-keyword">if</span> (failedLocksLimit == <span class="hljs-number">0</span>) {
+                unlockInner(acquiredLocks);
+                <span class="hljs-keyword">if</span> (waitTime == -<span class="hljs-number">1</span> &amp;&amp; leaseTime == -<span class="hljs-number">1</span>) {
+                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+                }
+                failedLocksLimit = failedLocksLimit();
+                acquiredLocks.clear();
+                <span class="hljs-comment">// reset iterator</span>
+                <span class="hljs-keyword">while</span> (iterator.hasPrevious()) {
+                    iterator.previous();
+                }
+            } <span class="hljs-keyword">else</span> {
+                failedLocksLimit--;
+            }
+        }
+
+        <span class="hljs-comment">/**
+         * 6.&#x8BA1;&#x7B97; &#x76EE;&#x524D;&#x4ECE;&#x5404;&#x4E2A;&#x8282;&#x70B9;&#x83B7;&#x53D6;&#x9501;&#x5DF2;&#x7ECF;&#x6D88;&#x8017;&#x7684;&#x603B;&#x65F6;&#x95F4;&#xFF0C;&#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x7B49;&#x4E8E;&#x6700;&#x5927;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x5B9A;&#x6700;&#x7EC8;&#x7533;&#x8BF7;&#x9501;&#x5931;&#x8D25;&#xFF0C;&#x8FD4;&#x56DE;false
+         */</span>
+        <span class="hljs-keyword">if</span> (remainTime != -<span class="hljs-number">1</span>) {
+            remainTime -= System.currentTimeMillis() - time;
+            time = System.currentTimeMillis();
+            <span class="hljs-keyword">if</span> (remainTime &lt;= <span class="hljs-number">0</span>) {
+                unlockInner(acquiredLocks);
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+            }
+        }
+    }
+
+    <span class="hljs-keyword">if</span> (leaseTime != -<span class="hljs-number">1</span>) {
+        List&lt;RFuture&lt;Boolean&gt;&gt; futures = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(acquiredLocks.size());
+        <span class="hljs-keyword">for</span> (RLock rLock : acquiredLocks) {
+            RFuture&lt;Boolean&gt; future = ((RedissonLock) rLock).expireAsync(unit.toMillis(leaseTime), TimeUnit.MILLISECONDS);
+            futures.add(future);
+        }
+
+        <span class="hljs-keyword">for</span> (RFuture&lt;Boolean&gt; rFuture : futures) {
+            rFuture.syncUninterruptibly();
+        }
+    }
+
+    <span class="hljs-comment">/**
+     * 7.&#x5982;&#x679C;&#x903B;&#x8F91;&#x6B63;&#x5E38;&#x6267;&#x884C;&#x5B8C;&#x5219;&#x8BA4;&#x4E3A;&#x6700;&#x7EC8;&#x7533;&#x8BF7;&#x9501;&#x6210;&#x529F;&#xFF0C;&#x8FD4;&#x56DE;true
+     */</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+}
+</code></pre>
+<p><hr><div id="vcomments"></div><script src="//unpkg.com/valine/dist/Valine.min.js"></script><script>new Valine({el: "#vcomments",appId: 'TFSll9o8N2VjWuA0q0CXIBtk-gzGzoHsz',appKey: 'dnU9vjDuKzlEqzVJeIMbqVFX',placeholder: 'Just go go',avatar: '',meta: undefined,pageSize: 10,lang: 'zh-CN',recordIP: false})</script></p>
+
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Redis分布式锁.html" class="navigation navigation-prev " aria-label="Previous page: Redis分布式锁.md">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Redis深度历险读书笔记.html" class="navigation navigation-next " aria-label="Next page: Redis深度历险读书笔记.md">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Redis分布式锁RedLock.md","level":"1.5.2.5","depth":3,"next":{"title":"Redis深度历险读书笔记.md","level":"1.5.2.6","depth":3,"path":"notes/20.12/Redis/Redis深度历险读书笔记.md","ref":"notes/20.12/Redis/Redis深度历险读书笔记.md","articles":[]},"previous":{"title":"Redis分布式锁.md","level":"1.5.2.4","depth":3,"path":"notes/20.12/Redis/Redis分布式锁.md","ref":"notes/20.12/Redis/Redis分布式锁.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["valine","-lunr","-search","search-pro","back-to-top-button","expandable-chapters","code","splitter","page-treeview","hide-element","pageview-count","popup","-sharing","sharing-plus","github","page-toc-button","anchors"],"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"","minHeaderCount":"2","minHeaderDeep":"2"},"github":{"url":"https://github.com/dongzhonghua/dongzhonghua.github.io"},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"qq":false,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"],"douban":false,"facebook":false,"weibo":true,"twitter":false,"pocket":false,"google":true,"qzone":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"anchors":{},"expandable-chapters":{},"valine":{"avatar":"","lang":"zh-CN","pageSize":10,"placeholder":"Just go go","recordIP":false,"appId":"TFSll9o8N2VjWuA0q0CXIBtk-gzGzoHsz","appKey":"dnU9vjDuKzlEqzVJeIMbqVFX"}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/20.12/Redis/Redis分布式锁RedLock.md","mtime":"2021-02-28T03:55:15.607Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-02T13:11:00.962Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
