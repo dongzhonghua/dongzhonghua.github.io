@@ -50,7 +50,7 @@ redis的基础假设是每个操作都很快，所以设计成单线程处理；
 
 1、导出rdb文件分析: `bgsave`, `redis-rdb-tool`;
 2、命令: `redis-cli --bigkeys`,找出最大的key；
-3、自己写脚本扫描;
+3、自己写脚本扫描，比如用scan命令就可以扫描大key;
 4、单个key查看: `debug object key`： 查看某个key序列化后的长度，每次看1个key的信息,比较没效率。
 
 ### 删除大Key:
