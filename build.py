@@ -1,7 +1,6 @@
 import getopt
 import os
 import sys
-import time
 
 folder = "notes"
 template = '{0}* [{1}]({2})\n'
@@ -71,7 +70,7 @@ if __name__ == '__main__':
         if d.startswith("."):
             continue
         get_filelist(folder + "/" + d, 0)
-    res = os.system("gitbook install && gitbook build . docs")
+    # res = os.system("gitbook install && gitbook build . docs")
+    res=0
     if res == 0 and upload is not 0:
-        time.sleep(3)
-        os.system("git add . && git commit -m {} && git push origin main".format(upload))
+        os.system("git add . && sleep 3 && git commit -m {} && git push origin main".format(upload))
