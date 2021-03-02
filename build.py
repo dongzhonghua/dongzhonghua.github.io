@@ -72,7 +72,6 @@ if __name__ == '__main__':
             continue
         get_filelist(folder + "/" + d, 0)
     res = os.system("gitbook install && gitbook build . docs")
-    print(res)
-    if upload is not 0:
+    if res == 0 and upload is not 0:
         time.sleep(3)
         os.system("git add . && git commit -m {} && git push origin main".format(upload))
