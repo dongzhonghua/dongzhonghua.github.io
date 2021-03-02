@@ -71,7 +71,7 @@ if __name__ == '__main__':
         if d.startswith("."):
             continue
         get_filelist(folder + "/" + d, 0)
-    os.system("gitbook build . docs")
+    os.system("git install && gitbook build . docs")
     if upload is not 0:
         time.sleep(3)
         os.system("git add . && git commit -m {} && git push origin main".format(upload))
