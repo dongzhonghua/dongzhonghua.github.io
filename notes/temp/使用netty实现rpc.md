@@ -566,11 +566,36 @@ public class ClientApplication {
 }
 ```
 
+## 注册中心
+
+使用zk作为注册中心。
+
+为什么要选用注册中心
+
+假设没有注册中心，采用直连的方式，如果服务提供者发生变化，那么消费者也要立即更新，耦合度太高
+
+zk作为服务注册的一个框架，消费者只需要向注册中心获取服务提供者的地址，无需自己做更新。达到了**解耦合**的作用，而且还能实现**服务的自动发现**。
+
+
+
+XXL-RPC中每个服务在zookeeper中对应一个节点，如图"iface name"节点，该服务的每一个provider机器对应"iface name"节点下的一个子节点，如图中"192.168.0.1:9999"、"192.168.0.2:9999"和"192.168.0.3:9999"，子节点类型为zookeeper的**EPHMERAL（临时节点）**类型，该类型节点有个特点，当机器和zookeeper集群断掉连接后节点将会被移除。consumer底层可以从zookeeper获取到可提供服务的provider集群地址列表，从而可以向其中一个机器发起RPC调用。zk的注册中心类提供了一系列的方法，并通过定义的zkclient类来操作zk，创建和更新节点，这样就可以完成注册的功能
+
+
+
+
+
 ## 参考
 
 本文主要参考以下博客，并做了一些改进。
 
 > 主要参考：https://juejin.cn/post/6844903957622423560 博客写得比较详细
+> 
 > https://www.w3cschool.cn/architectroad/architectroad-rpc-framework.html
+> 
 > https://github.com/pjmike/springboot-rpc-demo
+> 
 > 提供了非常好的解决思路：https://xilidou.com/2018/09/26/dourpc-remoting/
+>
+> guide哥写的rpc:https://github.com/Snailclimb/guide-rpc-framework
+>
+> guide哥写的rpc教程：https://blog.csdn.net/qq_40856284/category_10138756.html
