@@ -1,2 +1,5 @@
+* [java的SPI机制.md](java的SPI机制.md)
+* [winds订阅RSS.md](winds订阅RSS.md)
 * [拍卖的相关概念.md](拍卖的相关概念.md)
+* [日志格式配置.md](日志格式配置.md)
 * [限流算法整理.md](限流算法整理.md)

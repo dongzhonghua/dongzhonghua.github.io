@@ -8,4 +8,6 @@
 
 
 
-![img](/Users/dongzhonghua03/Pictures/redis线程模型.png)
+![img](https://gitee.com/dongzhonghua/zhonghua/raw/master/img/blog/redis%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B.png)
+
+![img](https://gitee.com/dongzhonghua/zhonghua/raw/master/img/blog/redis线程模型2.png)

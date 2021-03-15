@@ -1,5 +1,4 @@
 * [Java代理.md](Java代理.md)
-* [Redis](Redis/README.md)
 * [csdn上分享的java一次oom的解决方案.md](csdn上分享的java一次oom的解决方案.md)
 * [vimdiff.md](vimdiff.md)
 * [使用maven做Junit5单元测试.md](使用maven做Junit5单元测试.md)

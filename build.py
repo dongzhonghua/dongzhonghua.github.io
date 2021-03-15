@@ -8,10 +8,10 @@ template = '{0}* [{1}]({2})\n'
 notes = os.listdir(folder)
 notes.sort()
 
-f = open("SUMMARY.md", "w")
-f.write("# Summary\n")
-f.write("* [前言](README.md)\n")
-
+summary = open("SUMMARY.md", "w")
+summary.write("# Summary\n")
+summary.write("* [前言](README.md)\n")
+readme = open("README.md", "w")
 readme_template = '{0}* [{1}]({2})\n'
 
 
@@ -40,11 +40,13 @@ def get_filelist(file, level):
     if os.path.isfile(file):
         if "README" not in file:
             text = template.format("\t" * level, os.path.basename(file), file)
-            f.write(text)
+            summary.write(text)
+            readme.write(text)
     elif os.path.isdir(file):
         text = template.format("\t" * level, os.path.basename(file), file + "/README.md")
         write_readme(open(file + "/README.md", 'w'), file, 0)
-        f.write(text)
+        summary.write(text)
+        readme.write(text)
         _listdir = os.listdir(file)
         _listdir.sort()
         for s in _listdir:
@@ -70,7 +72,7 @@ if __name__ == '__main__':
         if d.startswith("."):
             continue
         get_filelist(folder + "/" + d, 0)
-    # res = os.system("gitbook install && gitbook build . docs")
-    res=0
+    # res = 0
+    res = os.system("gitbook install && gitbook build . docs")
     if res == 0 and upload is not 0:
         os.system("git add . && sleep 3 && git commit -m {} && git push origin main".format(upload))
