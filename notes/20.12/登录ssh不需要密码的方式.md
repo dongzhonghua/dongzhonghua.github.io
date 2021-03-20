@@ -1,6 +1,6 @@
 [TOC]
 
-机器A 向 机器B 进行免密码登陆
+## 机器A 向 机器B 进行免密码登陆
 
 ### step1生成公私钥：
 
@@ -79,28 +79,40 @@ SSH 为建立在应用层和传输层基础上的安全协议。SSH 是目前较
 
 ## 解决多个ssh public key的问题
 
-``` shell
-# 第一步
+
+### 第一步
+```shell
 ssh-keygen -t rsa -C "dongzhonghua03@kuaishou.com" -f ~/.ssh/id_rsa_dongzhonghua03
-# 第二步 添加公钥到gitlab
-# 第三步 添加密钥到ssh-agent中
-eval $(ssh-agent)  # exec ssh-agent bash
+```
+
+### 第二步 添加公钥到gitlab
+
+### 第三步 添加密钥到ssh-agent中
+
+```shell
+exec ssh-agent bash
 ssh-add ~/.ssh/id_rsa_dongzhonghua03
 ssh-add ~/.ssh/id_rsa
-# 第四步添加config配置文件分别映射不同的GitHub和码云的账户下
-# 进入~/.ssh目录，新建config文件，并添加下面的内容
+```
+
+### 第四步添加config配置文件分别映射不同的GitHub和码云的账户下
+
+ 进入~/.ssh目录，新建config文件，并添加下面的内容
+```
 # 个人的GitHub公钥
 Host github.com
 HostName github.com
 PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa_github
-# 指定特定的ssh私钥文件
+IdentityFile ~/.ssh/id_rsa_github # 指定特定的ssh私钥文件
 # 公司的's gitee.com
 Host gitee.com
 HostName gitee.com
 PreferredAuthentications publickey
-IdentityFile ~/.ssh/id_rsa
-# 指定特定的ssh私钥文件
-# 第五步 检查配置是否成功执行下面命令
+IdentityFile ~/.ssh/id_rsa # 指定特定的ssh私钥文件
+```
+### 第五步 检查配置是否成功执行下面命令
+
+```shell
 ssh -T git@github.com
 ```
+
