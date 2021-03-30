@@ -1,3 +1,5 @@
+[TOC]
+
 我们经常会遇到这样的需求，例如：
 
 - 每个用户1秒内最多产生一次有效的点赞
@@ -47,6 +49,7 @@ if (count > THRESHOLD) {
 long expireTime = TimeUnit.HOURS.toMillis(1);
 String key = String.valueOf(userId);
 long count = redis.incr(key);
+// 返回剩余生存毫秒时间
 long ttl = redis.pttl(key);
 if (ttl <= 0) {
 	redis.pexpire(expireTime);

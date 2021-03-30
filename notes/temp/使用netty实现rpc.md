@@ -10,7 +10,11 @@
     这里好像是一个可行的解决方案https://github.com/Snailclimb/guide-rpc-framework/blob/master/docs/%E4%BD%BF%E7%94%A8CompletableFuture%E4%BC%98%E5%8C%96%E6%8E%A5%E5%8F%97%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E7%AB%AF%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C.md
 
 - [ ] 代理工厂那个地方实现的还是不够优雅
-- [ ] zookeeper注册中心等
+
+- [x] zookeeper注册中心等
+
+- [ ] 注册中心是不是可以尝试一下eureka
+
 - [ ] 加入更多的rpc的功能？
 
 ## 原理
