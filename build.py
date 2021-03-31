@@ -72,6 +72,7 @@ if __name__ == '__main__':
         if d.startswith("."):
             continue
         get_filelist(folder + "/" + d, 0)
+    # 不关闭文件的话，内容会在内存缓冲区，程序关闭的时候才会写到文件里
     summary.close()
     readme.close()
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>文件生成完毕")
