@@ -67,12 +67,16 @@ if __name__ == '__main__':
             upload = value
     listdir = os.listdir(folder)
     listdir.sort()
-    print(">>>>>>>开始生成SUMMARY.md")
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>开始生成SUMMARY.md")
     for d in listdir:
         if d.startswith("."):
             continue
         get_filelist(folder + "/" + d, 0)
+    summary.close()
+    readme.close()
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>文件生成完毕")
     # res = 0
     res = os.system("gitbook install && gitbook build . docs")
     if res == 0 and upload is not 0:
-        os.system("git add . && sleep 3 && git commit -m {} && git push origin main".format(upload))
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>开始上传")
+        os.system("git add . && git commit -m {} && git push origin main".format(upload))
