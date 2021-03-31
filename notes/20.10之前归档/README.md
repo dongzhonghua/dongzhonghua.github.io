@@ -1,7 +1,6 @@
 * [HashMap.md](HashMap.md)
 * [JVM.md](JVM.md)
 * [Java服务异常分析的几个思路.md](Java服务异常分析的几个思路.md)
-* [Spring知识点.md](Spring知识点.md)
 * [crontab定时任务.md](crontab定时任务.md)
 * [idea远程部署docker.md](idea远程部署docker.md)
 * [linux系统命令行快捷键.md](linux系统命令行快捷键.md)
