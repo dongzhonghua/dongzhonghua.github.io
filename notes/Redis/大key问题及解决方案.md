@@ -16,7 +16,7 @@
 
 ### 单key大小
 
-Redis限制每个String类型value大小不超过512MB， 实际开发中，不要超过10KB，否则会对CPU和网卡造成极大负载。 hash、list、set、zset元素个数不要超过5000。
+Redis限制每个String类型value大小不超过512MB， 实际开发中，不要超过10KB，否则会对CPU和网卡造成极大负载。 hash、list、set、zset元素个数不要超过**5000**。
 
 理论上限: 每个hashset里头元素数量< 2^32.
 
@@ -90,3 +90,6 @@ lazyfree-lazy-server-del: 异步内部删除key；生效于rename命令
 ## rename命令: RENAME mykey new_name 
 ## 如果new_name已经存在，会先删除new_name，此时触发上述lazy机制
 ```
+
+
+
