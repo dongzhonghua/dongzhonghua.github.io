@@ -16,3 +16,9 @@
 | `$sig`                | 类型为 java.lang.Class 的参数类型数组           |
 | `$type`               | 一个 java.lang.Class 对象，表示返回值类型       |
 | `$class`              | 一个 java.lang.Class 对象，表示当前正在修改的类 |
+
+
+
+
+
+设置监控入口和出口
