@@ -1,0 +1,1 @@
+<img src="https://gitee.com/dongzhonghua/zhonghua/raw/master/img/blog/%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%E7%BB%93%E6%9E%84.jpeg" alt="虚拟机栈结构"  />
